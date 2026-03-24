@@ -15,13 +15,21 @@ def firstPage():
 @app.route('/LinealRegresion', methods=["GET","POST"])
 def calculateGrade():
 
-    calculateResults = None
+    resultado = None
 
     if request.method == "POST":
-        hours = float(request.form["hours"])
-        calculateResults = LinealRegresion.calculateGrade(hours)
+        edad = float(request.form["edad"])
+        ingreso = float(request.form["ingreso"])
+        visitas = float(request.form["visitas"])
+        tiempo = float(request.form["tiempo"])
+        compras = float(request.form["compras"])
+        descuento = float(request.form["descuento"])
 
-    return render_template("linealRegresionGrades.html", result=calculateResults)
+        resultado = LinealRegresion.predecir_cliente(
+            edad, ingreso, visitas, tiempo, compras, descuento
+        )
+
+    return render_template("linealRegresionGrades.html", result=resultado)
 
 
 if __name__ == "__main__":
