@@ -23,6 +23,9 @@ def calculateGrade():
 
     return render_template("linealRegresionGrades.html", result=calculateResults)
 
+@app.route('/casosdeuso')
+def casosdeuso():
+    return render_template('casosdeuso1.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
