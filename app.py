@@ -1,53 +1,35 @@
 from flask import Flask, render_template, request
-import pandas as pd
-import os
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+import LinealRegresion
 
 app = Flask(__name__)
 
-def entrenar_modelo():
-    # Ruta correcta del CSV (esto evita el error FileNotFound)
-    ruta = os.path.join(os.path.dirname(__file__), "dataset_regresion_logistica.csv")
-    df = pd.read_csv(ruta)
+@app.route('/')
+def home():
+    return "hello flask"
 
-    X = df.drop("target", axis=1)
-    y = df["target"]
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-    modelo = LogisticRegression()
-    modelo.fit(X_train, y_train)
-
-    y_pred = modelo.predict(X_test)
-    acc = accuracy_score(y_test, y_pred)
-
-    return modelo, acc
+@app.route('/FirstPage')
+def firstPage():
+    return render_template('index.html')
 
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    modelo, acc = entrenar_modelo()
-    prediccion = None
+@app.route('/LinealRegresion', methods=["GET","POST"])
+def calculateGrade():
+
+    resultado = None
 
     if request.method == "POST":
-        try:
-            edad = int(request.form["edad"])
-            ingreso = float(request.form["ingreso"])
-            visitas = int(request.form["visitas"])
-            tiempo = float(request.form["tiempo"])
-            compras = int(request.form["compras"])
-            descuento = int(request.form["descuento"])
+        edad = float(request.form["edad"])
+        ingreso = float(request.form["ingreso"])
+        visitas = float(request.form["visitas"])
+        tiempo = float(request.form["tiempo"])
+        compras = float(request.form["compras"])
+        descuento = float(request.form["descuento"])
 
-            datos = [[edad, ingreso, visitas, tiempo, compras, descuento]]
-            resultado = modelo.predict(datos)
+        resultado = LinealRegresion.predecir_cliente(
+            edad, ingreso, visitas, tiempo, compras, descuento
+        )
 
-            prediccion = "Compra" if resultado[0] == 1 else "No compra"
-        except:
-            prediccion = "Error en los datos ingresados"
-
-    return render_template("index.html", accuracy=acc, prediccion=prediccion)
+    return render_template("linealRegresionGrades.html", result=resultado)
 
 
 if __name__ == "__main__":

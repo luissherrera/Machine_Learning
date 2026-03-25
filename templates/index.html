@@ -1,30 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Machine Learning App</title>
+    <meta charset="UTF-8">
+    <title>Machine Learning Examples</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            color: #333;
+        }
+
+        header {
+            background-color: #0f2027;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        section {
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #0f2027;
+        }
+
+        footer {
+            background-color: #0f2027;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Modelo de Regresión Logística</h1>
+<header>
+    <h1>🤖 Machine Learning Examples</h1>
+    <p>Real-world applications of Machine Learning</p>
+</header>
 
-    <h2>Exactitud del modelo: {{ accuracy }}</h2>
+<section>
 
-    <h3>Ingresar datos del cliente</h3>
+    <div class="card">
+        <h2>1️⃣ Email Classification (Spam Detection)</h2>
+        <p>
+            Email systems use Machine Learning models
+            to classify messages as "Spam" or "Not Spam".
+            This is an example of supervised learning.
+        </p>
+    </div>
 
-    <form method="POST">
-        Edad: <input type="number" name="edad" required><br><br>
-        Ingreso mensual: <input type="number" name="ingreso" required><br><br>
-        Visitas web al mes: <input type="number" name="visitas" required><br><br>
-        Tiempo en sitio (min): <input type="number" step="0.1" name="tiempo" required><br><br>
-        Compras previas: <input type="number" name="compras" required><br><br>
-        Descuento usado (0 o 1): <input type="number" name="descuento" required><br><br>
+    <div class="card">
+        <h2>2️⃣ Movie Recommendation Systems</h2>
+        <p>
+            Platforms like Netflix use algorithms that analyze
+            user behavior to recommend personalized movies
+            or TV shows.
+        </p>
+    </div>
 
-        <button type="submit">Predecir</button>
-    </form>
+    <div class="card">
+        <h2>3️⃣ Facial Recognition</h2>
+        <p>
+            Security systems and social networks use models
+            that identify faces in images using neural networks.
+        </p>
+    </div>
 
-    {% if prediccion %}
-        <h2>Resultado: {{ prediccion }}</h2>
-    {% endif %}
+    <div class="card">
+        <h2>4️⃣ Sales Prediction</h2>
+        <p>
+            Companies use predictive models to estimate
+            future sales based on historical data.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>5️⃣ Medical Diagnosis</h2>
+        <p>
+            Some systems analyze symptoms and medical results
+            to help predict possible diseases.
+        </p>
+    </div>
+
+</section>
+
+<footer>
+    Machine Learning Course <br>
+    Daniel Steven Naranjo Montaño
+</footer>
 
 </body>
 </html>
