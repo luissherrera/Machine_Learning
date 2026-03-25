@@ -29,7 +29,7 @@ def calculateGrade():
             edad, ingreso, visitas, tiempo, compras, descuento
         )
 
-    return render_template("linealRegresionGrades.html", result=resultado)
+    return render_template("linealRegresionGrades.html", result=calculateResults)
 
 
 if __name__ == "__main__":
