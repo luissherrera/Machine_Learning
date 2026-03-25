@@ -1,28 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 <meta charset="UTF-8">
-<title>Linear Regression Prediction</title>
+<title>Predicción de Compra</title>
+
+<style>
+body {
+    font-family: Arial;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    margin: auto;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #218838;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>Linear Regression: Calculate Grade Based On Study Hours</h1>
+<h1>Predicción de Cliente</h1>
 
 <form method="POST">
 
-<label for="hours">Study Hours</label>
-<input type="number" name="hours" step="0.1" required>
+<label>Edad:</label>
+<input type="number" name="edad" required value="{{ request.form.get('edad', '') }}">
 
-<button type="submit">Predict</button>
+<label>Ingreso mensual:</label>
+<input type="number" name="ingreso" required value="{{ request.form.get('ingreso', '') }}">
+
+<label>Visitas al mes:</label>
+<input type="number" name="visitas" required value="{{ request.form.get('visitas', '') }}">
+
+<label>Tiempo en el sitio:</label>
+<input type="number" step="0.1" name="tiempo" required value="{{ request.form.get('tiempo', '') }}">
+
+<label>Compras previas:</label>
+<input type="number" name="compras" required value="{{ request.form.get('compras', '') }}">
+
+<label>Descuento (0 o 1):</label>
+<input type="number" name="descuento" min="0" max="1" required value="{{ request.form.get('descuento', '') }}">
+
+<button type="submit">Predecir</button>
 
 </form>
 
-{% if result is not none %}
-<h2>Estimated Grade: {{ result }}</h2>
+{% if result %}
+<h2>Resultado: {{ result }}</h2>
 {% endif %}
 
 </body>
-
 </html>
