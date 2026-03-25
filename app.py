@@ -3,18 +3,28 @@ import LinealRegresion
 
 app = Flask(__name__)
 
+# -------------------------------
+# Ruta principal: HOME
+# -------------------------------
 @app.route('/')
 def home():
-    return "hello flask"
+    return render_template("home.html")
 
+# Página opcional
 @app.route('/FirstPage')
 def firstPage():
     return render_template('index.html')
 
+# -------------------------------
+# Página de Casos de Uso (Dashboard)
+# -------------------------------
+@app.route('/use_cases')
+def use_cases():
+    return render_template("use_cases.html")
 
-@app.route('/LinealRegresion', methods=["GET","POST"])
-def calculateGrade():
-
+# -------------------------------
+# Rutas de los casos individuales
+# -------------------------------
 @app.route('/caso1')
 def caso1():
     return render_template('caso1.html')
@@ -31,8 +41,12 @@ def caso3():
 def caso4():
     return render_template('caso4.html')
 
+# -------------------------------
+# Ruta de predicción LinealRegresion
+# -------------------------------
+@app.route('/LinealRegresion', methods=["GET", "POST"])
+def calculateGrade():
     resultado = None
-
     if request.method == "POST":
         edad = float(request.form["edad"])
         ingreso = float(request.form["ingreso"])
@@ -45,8 +59,10 @@ def caso4():
             edad, ingreso, visitas, tiempo, compras, descuento
         )
 
-    return render_template("linealRegresionGrades.html", result=calculateResults)
+    return render_template("linealRegresionGrades.html", result=resultado)
 
-
+# -------------------------------
+# Ejecutar app
+# -------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
