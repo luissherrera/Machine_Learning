@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Dropout Prediction</title>
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
+    color: #333;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* CONTENEDOR */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* TARJETA */
+.card {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+}
+
+/* TITULO PRINCIPAL */
+.card h1 {
+    text-align: center;
+    color: #2a5298;
+    font-size: 2.5em;
+    margin-bottom: 35px;
+}
+
+/* SECCIONES */
+.section {
+    margin-bottom: 25px;
+    padding-left: 10px;
+    border-left: 6px solid #2a5298;
+}
+
+.section h2 {
+    color: #1e3c72;
+    font-size: 1.6em;
+    margin-bottom: 12px;
+}
+
+.section p, .section ul {
+    margin-top: 8px;
+    line-height: 1.7;
+    color: #555;
+    font-size: 1em;
+}
+
+ul {
+    margin-left: 25px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Resaltar palabras clave */
+strong {
+    color: #2a5298;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Student Dropout Prediction</h1>
+
+    <div class="section">
+      <h2>Problem</h2>
+      <p>
+        Many students leave their studies without warning, impacting both their personal future and institutional performance.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Machine Learning Type</h2>
+      <p><strong>Supervised Learning — Binary Classification</strong></p>
+      <p>
+        The model learns from historical student data to predict:
+        <br>0 = No dropout
+        <br>1 = Dropout risk
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Algorithms</h2>
+      <ul>
+        <li><strong>Random Forest:</strong> High accuracy and robust performance</li>
+        <li><strong>Logistic Regression:</strong> Simple, fast, interpretable</li>
+        <li><strong>XGBoost:</strong> High efficiency and performance for complex datasets</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Input Data</h2>
+      <ul>
+        <li>Grades and GPA</li>
+        <li>Attendance records</li>
+        <li>Number of failed courses</li>
+        <li>Current semester</li>
+        <li>Study hours per week</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Output</h2>
+      <p><strong>0 → No Dropout</strong></p>
+      <p><strong>1 → Dropout Risk</strong></p>
+      <p>The model can also provide a probability score for each student.</p>
+    </div>
+
+    <div class="section">
+      <h2>Impact</h2>
+      <ul>
+        <li>Enable early intervention for at-risk students</li>
+        <li>Provide better support and guidance</li>
+        <li>Improve overall institutional performance and retention</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
