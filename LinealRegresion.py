@@ -1,10 +1,13 @@
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
 
 # 1. Cargar datos (CORREGIDO: usa coma)
-df = pd.read_csv("dataset_regresion_logistica.csv")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(script_dir, "dataset_regresion_logistica.csv")
+df = pd.read_csv(csv_path)
 
 # 2. Verificar columnas
 print("Columnas del dataset:")

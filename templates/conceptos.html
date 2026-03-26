@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Concepts - Linear Regression</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            color: #333;
+            padding: 30px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #2a5298;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #1e3c72;
+            margin-top: 20px;
+        }
+
+        .equation {
+            background: #f4f7f6;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.2em;
+            text-align: center;
+            color: #d35400;
+            margin: 15px 0;
+        }
+
+        ul,
+        ol {
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #2a5298;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 1px solid white;
+        }
+
+        .btn-home:hover {
+            background: white;
+            color: #2a5298;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📘 4. Linear Regression – Basic Concepts</h1>
+
+        <div class="cards">
+
+            <!-- What is Linear Regression? -->
+            <div class="card">
+                <h2>4.1 What Is Linear Regression?</h2>
+                <p>Linear Regression is a statistical and machine learning method that models the linear relationship
+                    between a <span class="highlight">dependent variable</span> (the value we want to predict) and one
+                    or more <span class="highlight">independent variables</span> (the input features). It assumes that
+                    the relationship between inputs and output can be approximated by a straight line (in simple
+                    regression) or a hyperplane (in multiple regression).</p>
+
+                <p>The general form of a simple linear regression model is:</p>
+                <div class="equation">y = β₀ + β₁x + ε</div>
+
+                <p>Where:</p>
+                <ul>
+                    <li><strong>y</strong> = the predicted (dependent) variable</li>
+                    <li><strong>x</strong> = the input (independent) variable</li>
+                    <li><strong>β₀</strong> = the intercept (value of y when x = 0)</li>
+                    <li><strong>β₁</strong> = the slope (rate of change of y per unit change in x)</li>
+                    <li><strong>ε</strong> = the error term (residual)</li>
+                </ul>
+            </div>
+
+            <!-- 4.2 Independent and Dependent Variables -->
+            <div class="card">
+                <h2>4.2 Independent and Dependent Variables</h2>
+                <p>In the context of this project, the <span class="highlight">dependent variable</span> is the IMDb
+                    score of a Netflix title. The <span class="highlight">independent variables</span> are the input
+                    features used to predict this score. Examples include:</p>
+                <ul>
+                    <li>Release year of the content</li>
+                    <li>Duration of the movie or series (in minutes)</li>
+                    <li>Content rating (e.g., PG, R, TV-MA)</li>
+                    <li>Number of votes received on IMDb</li>
+                </ul>
+            </div>
+
+            <!-- 4.3 Training Data -->
+            <div class="card">
+                <h2>4.3 Training Data</h2>
+                <p>Training data refers to the subset of the dataset used to fit the regression model. During training,
+                    the algorithm adjusts the <span class="highlight">slope (β₁)</span> and <span
+                        class="highlight">intercept (β₀)</span> to minimize the total prediction error across all
+                    training examples.</p>
+                <p>In this project, <strong>80%</strong> of the Netflix dataset is used for training and
+                    <strong>20%</strong> for testing.</p>
+            </div>
+
+            <!-- 4.4 Regression Line -->
+            <div class="card">
+                <h2>4.4 Regression Line</h2>
+                <p>The regression line is the best-fit straight line drawn through the data points that minimizes the
+                    sum of squared residuals (differences between actual and predicted values). This is achieved using
+                    the <span class="highlight">Ordinary Least Squares (OLS)</span> method, which is the standard
+                    approach in linear regression.</p>
+            </div>
+
+            <!-- 4.5 Slope and Intercept -->
+            <div class="card">
+                <h2>4.5 Slope and Intercept</h2>
+                <p>The <span class="highlight">slope (β₁)</span> represents how much the predicted IMDb score changes
+                    for a one-unit increase in an independent variable, holding other variables constant.</p>
+                <p>The <span class="highlight">intercept (β₀)</span> represents the baseline predicted score when all
+                    input features equal zero, though this value may not always have a practical interpretation
+                    depending on the feature scales.</p>
+            </div>
+
+            <!-- 4.6 Example of Application -->
+            <div class="card">
+                <h2>4.6 Example of Application</h2>
+                <p>Suppose we want to predict the IMDb score of a Netflix movie based solely on its release year. After
+                    training, the model might find that more recently released titles tend to have slightly higher
+                    ratings (e.g., <strong>β₁ = 0.03</strong>), meaning for each additional year of recency, the
+                    predicted score increases by 0.03 points.</p>
+                <p>If the intercept is <strong>β₀ = -50.5</strong> and the release year is <strong>2020</strong>, the
+                    model predicts:</p>
+                <div class="equation">IMDb Score = -50.5 + 0.03 × 2020 = 10.1 (capped at 10)</div>
+                <p>This simple example demonstrates the mechanics of the regression model.</p>
+            </div>
+
+        </div>
+
+        <a href="/" class="btn-home">Volver al Home</a>
+    </div>
+
+</body>
+
+</html>

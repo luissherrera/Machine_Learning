@@ -20,6 +20,13 @@ def use_cases():
     return render_template("use_cases.html")
 
 # -------------------------------
+# Página de Conceptos
+# -------------------------------
+@app.route('/lr/conceptos')
+def conceptos():
+    return render_template("conceptos.html")
+
+# -------------------------------
 # Rutas de los casos individuales
 # -------------------------------
 @app.route('/caso1')
@@ -57,6 +64,18 @@ def calculateGrade():
         )
 
     return render_template("linealRegresionGrades.html", result=calculateResults)
+
+# -------------------------------
+# Ruta de predicción Netflix
+# -------------------------------
+@app.route('/LinealRegresionNetflix', methods=["GET", "POST"])
+def predictNetflix():
+    resultado = None
+    if request.method == "POST":
+        descripcion = request.form.get("descripcion")
+        import LinealRegresionNetflix
+        resultado = LinealRegresionNetflix.predecir_genero(descripcion)
+    return render_template("linealregresionnetflix.html", result=resultado)
 
 # -------------------------------
 # Ejecutar app
