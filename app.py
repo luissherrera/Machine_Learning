@@ -62,6 +62,18 @@ def calculateGrade():
     return render_template("linealRegresionGrades.html", result=resultado)
 
 # -------------------------------
+# Ruta de predicción Netflix
+# -------------------------------
+@app.route('/LinealRegresionNetflix', methods=["GET", "POST"])
+def predictNetflix():
+    resultado = None
+    if request.method == "POST":
+        descripcion = request.form.get("descripcion")
+        import LinealRegresionNetflix
+        resultado = LinealRegresionNetflix.predecir_genero(descripcion)
+    return render_template("linealregresionnetflix.html", result=resultado)
+
+# -------------------------------
 # Ejecutar app
 # -------------------------------
 if __name__ == "__main__":
