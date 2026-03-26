@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Concepts - Linear Regression</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            color: #333;
+            padding: 30px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #2a5298;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #1e3c72;
+            margin-top: 20px;
+        }
+
+        .equation {
+            background: #f4f7f6;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.2em;
+            text-align: center;
+            color: #d35400;
+            margin: 15px 0;
+        }
+
+        ul,
+        ol {
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #2a5298;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 1px solid white;
+        }
+
+        .btn-home:hover {
+            background: white;
+            color: #2a5298;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📘 Linear Regression Concept</h1>
+
+        <div class="cards">
+
+            <!-- What is Linear Regression? -->
+            <div class="card">
+                <h2>What is Linear Regression?</h2>
+                <p>Linear regression is a mathematical and statistical model that aims to explain the relationship
+                    between a dependent variable (<span class="highlight">Y</span>) and one or more independent
+                    variables (<span class="highlight">X</span>), fitting a straight line that best represents that
+                    relationship.</p>
+
+                <p>Its basic equation is:</p>
+                <div class="equation">Y = β₀ + β₁X + ε</div>
+
+                <p>Where:</p>
+                <ul>
+                    <li><strong>Y</strong> = the variable you want to predict</li>
+                    <li><strong>X</strong> = the variable that influences Y</li>
+                    <li><strong>β₀</strong> = intercept (the value of Y when X = 0)</li>
+                    <li><strong>β₁</strong> = slope (how much Y changes when X increases by 1 unit)</li>
+                    <li><strong>ε</strong> = error or noise</li>
+                </ul>
+            </div>
+
+            <!-- What is it used for? -->
+            <div class="card">
+                <h2>What is it used for?</h2>
+                <p>Linear regression is used to:</p>
+                <ol>
+                    <li><strong>Predict future values:</strong> Estimate sales based on advertising, income based on
+                        years of study, or the price of a house based on its size.</li>
+                    <li><strong>Measure the impact of one variable on another:</strong> How much a product’s value
+                        increases when more money is invested in marketing.</li>
+                    <li><strong>Identify patterns or trends:</strong> Growth trends in energy consumption.</li>
+                    <li><strong>Evaluate causal relationships or correlations:</strong> Does temperature affect ice
+                        cream demand?</li>
+                </ol>
+                <p>Linear regression is one of the most widely used techniques in Machine Learning because of its
+                    simplicity, interpretability, and performance.</p>
+            </div>
+
+            <!-- Real Case Study -->
+            <div class="card">
+                <h2> Real Case Study (Well Explained)</h2>
+                <h3>Use Case: Predicting future inventory of products</h3>
+                <p><em>Very useful for your inventory management project.</em></p>
+
+                <p><strong>Problem:</strong> A store wants to anticipate how many units of a product it will need next
+                    week.</p>
+
+                <p><strong>Available data:</strong></p>
+                <ul>
+                    <li>Sales from recent weeks</li>
+                    <li>Day of the month</li>
+                    <li>Month of the year</li>
+                    <li>Season (holidays, promotions)</li>
+                </ul>
+
+                <p>Assume we use simple linear regression with:</p>
+                <ul>
+                    <li><strong>X</strong> = sales from last week</li>
+                    <li><strong>Y</strong> = sales for next week</li>
+                </ul>
+
+                <p>The model learns a relationship such as:</p>
+                <div class="equation">Sales_next_week = 5 + 0.8 × Sales_last_week</div>
+
+                <p><strong>Interpretation:</strong></p>
+                <p>If last week the store sold 100 units, the model predicts:</p>
+                <div class="equation">5 + 0.8 × 100 = 85 units</div>
+                <p>This helps plan purchases, avoid stockouts, and prevent overstock.</p>
+            </div>
+
+            <!-- Classic Case Study -->
+            <div class="card">
+                <h2>Classic Case Study (Very Clear)</h2>
+                <h3>Predicting the price of a house</h3>
+
+                <p><strong>Variables:</strong></p>
+                <ul>
+                    <li><strong>X:</strong> square meters</li>
+                    <li><strong>Y:</strong> house price</li>
+                </ul>
+
+                <p>If the model learns:</p>
+                <div class="equation">Price = 20,000 + 1,000 × SquareMeters</div>
+
+                <p><strong>Interpretation:</strong></p>
+                <p>Each additional square meter adds $1,000 to the price.</p>
+                <p>A house with 80 m² would cost:</p>
+                <div class="equation">20,000 + 1,000 × 80 = 100,000</div>
+                <p>Simple, interpretable, and useful.</p>
+            </div>
+
+        </div>
+
+        <a href="/" class="btn-home">Volver al Home</a>
+    </div>
+
+</body>
+
+</html>

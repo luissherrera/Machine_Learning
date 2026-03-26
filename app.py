@@ -23,6 +23,13 @@ def use_cases():
     return render_template("use_cases.html")
 
 # -------------------------------
+# Página de Conceptos
+# -------------------------------
+@app.route('/lr/conceptos')
+def conceptos():
+    return render_template("conceptos.html")
+
+# -------------------------------
 # Rutas de los casos individuales
 # -------------------------------
 @app.route('/caso1')
