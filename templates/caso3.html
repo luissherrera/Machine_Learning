@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Use Case 3 - Student Performance</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar h2 {
+            color: white;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #00c6ff;
+        }
+
+        /* CONTENEDOR */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        /* TARJETA */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease;
+        }
+
+        /* TITULO */
+        .card h1 {
+            text-align: center;
+            color: #2a5298;
+            margin-bottom: 25px;
+        }
+
+        /* SECCIONES */
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            border-left: 6px solid #2a5298;
+            padding-left: 10px;
+        }
+
+        .section p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        /* LISTA */
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        strong {
+            color: #2a5298;
+        }
+
+        /* ANIMACIÓN */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <h2>ML Project</h2>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/use-case-1">Use Case 1</a>
+            <a href="/use-case-2">Use Case 2</a>
+            <a href="/use-case-3">Use Case 3</a>
+        </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="container">
+        <div class="card">
+
+            <h1>Use Case 3: Student Performance Prediction</h1>
+
+            <div class="section">
+                <h2>Problem Description</h2>
+                <p>
+                    Educational institutions often struggle to identify students at risk of failing.
+                    Without early detection, it is difficult to provide timely academic support.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Type of Machine Learning</h2>
+                <p>
+                    This use case uses <strong>Supervised Learning</strong>, specifically classification,
+                    to predict student outcomes.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Input Data</h2>
+                <ul>
+                    <li>Study hours per week</li>
+                    <li>Attendance percentage</li>
+                    <li>Previous grades</li>
+                    <li>Participation level</li>
+                    <li>Assignment completion</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Expected Output</h2>
+                <p>
+                    The model predicts whether the student will <strong>pass or fail</strong>.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Real-World Relevance</h2>
+                <p>
+                    This system allows institutions to identify at-risk students early,
+                    improving performance and reducing dropout rates through data-driven decisions.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

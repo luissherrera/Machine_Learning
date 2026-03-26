@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Use Case 2 - Student Performance</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar h2 {
+            color: white;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #00c6ff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease;
+        }
+
+        .card h1 {
+            text-align: center;
+            color: #2a5298;
+            margin-bottom: 25px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            border-left: 6px solid #2a5298;
+            padding-left: 10px;
+        }
+
+        .section p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        strong {
+            color: #2a5298;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <h2>ML Project</h2>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/use-case-1">Use Case 1</a>
+            <a href="/use-case-2">Use Case 2</a>
+            <a href="/use-case-3">Use Case 3</a>
+        </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="container">
+        <div class="card">
+
+            <h1>Use Case 2: Student Performance Prediction</h1>
+
+            <div class="section">
+                <h2>Problem Description</h2>
+                <p>
+                    Educational institutions often struggle to identify students who are at risk of failing a course.
+                    Without early detection, it becomes difficult to provide timely academic support.
+                    This use case predicts student performance based on study habits and academic behavior.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Type of Machine Learning</h2>
+                <p>
+                    This use case uses <strong>Supervised Learning</strong>, specifically regression,
+                    to predict a student's final performance.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Input Data</h2>
+                <ul>
+                    <li>Study hours per week</li>
+                    <li>Attendance percentage</li>
+                    <li>Number of assignments completed</li>
+                    <li>Previous exam scores</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Expected Output</h2>
+                <p>
+                    The model predicts the <strong>final exam score</strong> of the student.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Real-World Relevance</h2>
+                <p>
+                    This system helps identify students at academic risk, allowing early intervention,
+                    improving academic performance, and supporting personalized learning strategies.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
