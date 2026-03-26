@@ -3,6 +3,10 @@ import LinealRegresion
 
 app = Flask(__name__)
 
+@app.route("/caso3")
+def use_case_3():
+    return render_template("use_cases/use_case3.html")
+
 @app.route('/')
 def home():
     return "hello flask"
@@ -29,7 +33,7 @@ def calculateGrade():
             edad, ingreso, visitas, tiempo, compras, descuento
         )
 
-    return render_template("linealRegresionGrades.html", result=calculateResults)
+    return render_template("linealRegresionGrades.html", result=calculateResults) # type: ignore
 
 
 if __name__ == "__main__":
