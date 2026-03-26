@@ -1,0 +1,7 @@
+[33me799d81[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDaniel[m[33m, [m[1;31morigin/Daniel[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33me799d81[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDaniel[m[33m, [m[1;31morigin/Daniel[m[33m)[m HEAD@{1}: checkout: moving from Daniel to Daniel
+[33me799d81[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDaniel[m[33m, [m[1;31morigin/Daniel[m[33m)[m HEAD@{2}: checkout: moving from use-cases to Daniel
+[33m298af8d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/linear-regression[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32muse-cases[m[33m, [m[1;32mmain[m[33m)[m HEAD@{3}: checkout: moving from use-cases to use-cases
+[33m298af8d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/linear-regression[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32muse-cases[m[33m, [m[1;32mmain[m[33m)[m HEAD@{4}: checkout: moving from main to use-cases
+[33m298af8d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/linear-regression[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32muse-cases[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: checkout: moving from main to main
+[33m298af8d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/linear-regression[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32muse-cases[m[33m, [m[1;32mmain[m[33m)[m HEAD@{6}: clone: from https://github.com/luissherrera/Machine_Learning.git
