@@ -1,184 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Use Case 2 - Student Performance</title>
+{% extends "base.html" %}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+{% block content %}
+<div class="card" style="margin-bottom: 25px;">
+    <h1 style="font-size: 2.2rem; color: var(--accent); text-align: center; margin-bottom: 10px;">
+        Student Performance Prediction
+    </h1>
+    <p style="text-align: center; color: var(--text-dim);">
+        Predicting academic success using supervised learning techniques.
+    </p>
+</div>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(120deg, #1e3c72, #2a5298);
-            min-height: 100vh;
-        }
-
-        .navbar {
-            width: 100%;
-            padding: 15px 40px;
-            background: rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar h2 {
-            color: white;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-
-        .nav-links a:hover {
-            color: #00c6ff;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            animation: fadeIn 1s ease;
-        }
-
-        .card h1 {
-            text-align: center;
-            color: #2a5298;
-            margin-bottom: 25px;
-        }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
-            color: #1e3c72;
-            margin-bottom: 8px;
-            border-left: 6px solid #2a5298;
-            padding-left: 10px;
-        }
-
-        .section p {
-            line-height: 1.6;
-            color: #444;
-        }
-
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        li {
-            margin-bottom: 6px;
-        }
-
-        strong {
-            color: #2a5298;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .nav-links {
-                margin-top: 10px;
-            }
-        }
-    </style>
-
-</head>
-<body>
-
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <h2>ML Project</h2>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/use-case-1">Use Case 1</a>
-            <a href="/use-case-2">Use Case 2</a>
-            <a href="/use-case-3">Use Case 3</a>
-        </div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <h3><i class="fas fa-exclamation-triangle"></i> Problem</h3>
+        <p style="color: var(--text-dim); margin-top: 10px; line-height: 1.6;">
+            Educational institutions often struggle to identify students at risk of failing.
+            Without early detection, providing timely academic support becomes difficult.
+        </p>
     </div>
 
-    <!-- CONTENIDO -->
-    <div class="container">
-        <div class="card">
-
-            <h1>Use Case 2: Student Performance Prediction</h1>
-
-            <div class="section">
-                <h2>Problem Description</h2>
-                <p>
-                    Educational institutions often struggle to identify students who are at risk of failing a course.
-                    Without early detection, it becomes difficult to provide timely academic support.
-                    This use case predicts student performance based on study habits and academic behavior.
-                </p>
-            </div>
-
-            <div class="section">
-                <h2>Type of Machine Learning</h2>
-                <p>
-                    This use case uses <strong>Supervised Learning</strong>, specifically regression,
-                    to predict a student's final performance.
-                </p>
-            </div>
-
-            <div class="section">
-                <h2>Input Data</h2>
-                <ul>
-                    <li>Study hours per week</li>
-                    <li>Attendance percentage</li>
-                    <li>Number of assignments completed</li>
-                    <li>Previous exam scores</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>Expected Output</h2>
-                <p>
-                    The model predicts the <strong>final exam score</strong> of the student.
-                </p>
-            </div>
-
-            <div class="section">
-                <h2>Real-World Relevance</h2>
-                <p>
-                    This system helps identify students at academic risk, allowing early intervention,
-                    improving academic performance, and supporting personalized learning strategies.
-                </p>
-            </div>
-
-        </div>
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <h3><i class="fas fa-layer-group"></i> Machine Learning Type</h3>
+        <p style="margin-top: 10px;"><strong>Supervised Learning — Regression</strong></p>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">
+            The model predicts a continuous value:
+            <br>• <span style="color: var(--accent);">Final Score</span> (0 - 100)
+        </p>
     </div>
 
-</body>
-</html>
+    <div class="card">
+        <h3><i class="fas fa-microchip"></i> Algorithms</h3>
+        <ul style="color: var(--text-dim); margin-top: 10px; padding-left: 20px;">
+            <li><strong>Linear Regression:</strong> Simple and effective baseline model.</li>
+            <li style="margin: 8px 0;"><strong>Decision Trees:</strong> Capture non-linear patterns.</li>
+            <li><strong>Random Forest:</strong> Improves accuracy and robustness.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-database"></i> Input Data (Features)</h3>
+        <ul style="color: var(--text-dim); margin-top: 10px; padding-left: 20px;">
+            <li>Study hours per week</li>
+            <li>Attendance percentage</li>
+            <li>Assignments completed</li>
+            <li>Previous exam scores</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 25px; border-top: 5px solid var(--accent);">
+    <h3><i class="fas fa-chart-line"></i> Real-World Impact</h3>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px; text-align: center;">
+        <div>
+            <h4 style="color: var(--accent);">Early Detection</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Identify struggling students.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Better Support</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Personalized academic help.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Performance</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Improve student outcomes.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

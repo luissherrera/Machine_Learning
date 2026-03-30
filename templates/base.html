@@ -4,61 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ML Academy Dashboard</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
     <div class="sidebar-header">ML ACADEMY</div>
     
     <nav class="nav-menu">
-        <a href="/" class="nav-item">
+
+        <!-- HOME -->
+        <a href="{{ url_for('home') }}" class="nav-item">
             <span><i class="fas fa-home"></i> Home</span>
         </a>
 
+        <!-- USE CASES -->
         <button class="dropdown-btn">
             <span><i class="fas fa-project-diagram"></i> ML Use Cases</span>
             <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/case1">Use Case 1</a>
-            <a href="/case2">Use Case 2</a>
-            <a href="/case3">Use Case 3</a>
-            <a href="/case4">Use Case 4</a>
+            <a href="{{ url_for('case1') }}">Use Case 1</a>
+            <a href="{{ url_for('case2') }}">Use Case 2</a>
+            <a href="{{ url_for('case3') }}">Use Case 3</a>
+            <a href="{{ url_for('case4') }}">Use Case 4</a>
         </div>
 
+        <!-- SUPERVISED ML -->
         <button class="dropdown-btn">
             <span><i class="fas fa-brain"></i> Supervised ML</span>
             <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-container">
+
+            <!-- LINEAR -->
             <div class="model-section-label">Linear Regression</div>
-            <a href="/lr/concepts">Basic Concepts</a>
-            <a href="/lr/application">Application</a>
+            <a href="{{ url_for('linear_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('linear_application') }}">Application</a>
 
+            <!-- LOGISTIC -->
             <div class="model-section-label">Logistic Regression</div>
-            <a href="/logistic/concepts">Basic Concepts</a>
-            <a href="/logistic/application">Application</a>
+            <a href="{{ url_for('logistic_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('logistic_application') }}">Application</a>
 
+            <!-- ASSIGNED -->
             <div class="model-section-label">Assigned Model</div>
-            <a href="/assigned/concepts">Basic Concepts</a>
-            <a href="/assigned/application">Application</a>
+            <a href="{{ url_for('assigned_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('assigned_application') }}">Application</a>
+
         </div>
     </nav>
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="main-content">
     {% block content %}{% endblock %}
 </div>
 
+<!-- SCRIPT -->
 <script>
-    /* Lógica para abrir/cerrar los menús desplegables */
+    // Dropdown menu logic
     var dropdown = document.getElementsByClassName("dropdown-btn");
     for (var i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", function() {
             this.classList.toggle("active");
             var dropdownContent = this.nextElementSibling;
+
             if (dropdownContent.style.display === "block") {
                 dropdownContent.style.display = "none";
             } else {

@@ -2,28 +2,27 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Linear Regression Prediction</title>
+<meta charset="UTF-8">
+<title>Linear Regression Prediction</title>
 </head>
 
 <body>
 
-    <h1>Linear Regression: Calculate Grade Based On Study Hours</h1>
+<h1>Linear Regression: Calculate Grade Based On Study Hours</h1>
 
     <form method="POST">
 
-        <label for="hours">Study Hours</label>
-        <input type="number" name="hours" step="0.1" required>
+<label for="hours">Study Hours</label>
+<input type="number" name="hours" step="0.1" required>
 
-        <button type="submit">Predecir</button>
+<button type="submit">Predict</button>
 
     </form>
 
-    {% if result is not none %}
-    <h2>Estimated Grade: {{ result }}</h2>
-    {% endif %}
+{% if result is not none %}
+<h2>Estimated Grade: {{ result }}</h2>
+{% endif %}
 
 </body>
-
 </html>
 //cometario de prueba
