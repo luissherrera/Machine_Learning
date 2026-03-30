@@ -1,36 +1,109 @@
 from flask import Flask, render_template, request
+
+# Modelos
 import LinealRegresion
+import LinealRegresionNetflix
+# import LogisticRegresion
+# import NearestCentroidModel
 
 app = Flask(__name__)
 
+# =========================
+# 🏠 MAIN
+# =========================
+
 @app.route('/')
 def home():
-    return "hello flask"
-
-@app.route('/FirstPage')
-def firstPage():
-    return render_template('index.html')
+    return render_template("home.html")
 
 
-@app.route('/LinealRegresion', methods=["GET","POST"])
-def calculateGrade():
+# =========================
+# 📊 USE CASES
+# =========================
 
-    resultado = None
+@app.route('/case1')
+def case1():
+    return render_template('case1.html')
+
+@app.route('/case2')
+def case2():
+    return render_template('case2.html')
+
+@app.route('/case3')
+def case3():
+    return render_template('case3.html')
+
+@app.route('/case4')
+def case4():
+    return render_template('case4.html')
+
+
+# =========================
+# 📈 LINEAR REGRESSION
+# =========================
+
+@app.route('/linear-regression/concepts')
+def linear_concepts():
+    return render_template('linear_concepts.html')
+
+
+@app.route('/linear-regression/application', methods=["GET", "POST"])
+def linear_application():
+
+    result = None
 
     if request.method == "POST":
-        edad = float(request.form["edad"])
-        ingreso = float(request.form["ingreso"])
-        visitas = float(request.form["visitas"])
-        tiempo = float(request.form["tiempo"])
-        compras = float(request.form["compras"])
-        descuento = float(request.form["descuento"])
+        hours = float(request.form["hours"])
+        result = LinealRegresion.calculateGrade(hours)
 
-        resultado = LinealRegresion.predecir_cliente(
-            edad, ingreso, visitas, tiempo, compras, descuento
-        )
+    return render_template('linear_application.html', result=result)
 
-    return render_template("linealRegresionGrades.html", result=resultado)
 
+# =========================
+# 📉 LOGISTIC REGRESSION
+# =========================
+
+@app.route('/logistic-regression/concepts')
+def logistic_concepts():
+    return render_template('logistic_concepts.html')
+
+
+@app.route('/logistic-regression/application', methods=["GET", "POST"])
+def logistic_application():
+
+    result = None
+
+    if request.method == "POST":
+        # Aquí luego conectas tu modelo
+        pass
+
+    return render_template('logistic_application.html', result=result)
+
+
+# =========================
+# 🧠 ASSIGNED MODEL (Nearest Centroid)
+# =========================
+
+@app.route('/assigned-model/concepts')
+def assigned_concepts():
+    return render_template('assigned_concepts.html')
+
+
+@app.route('/assigned-model/application', methods=["GET", "POST"])
+def assigned_application():
+
+    result = None
+
+    if request.method == "POST":
+        # Aquí conectarás Nearest Centroid
+        pass
+
+    return render_template('assigned_application.html', result=result)
+
+
+# =========================
+# 🚀 RUN
+# =========================
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 25px;">
+    <h1 style="font-size: 2.2rem; color: var(--accent); text-align: center; margin-bottom: 10px;">
+        Student Performance Prediction
+    </h1>
+    <p style="text-align: center; color: var(--text-dim);">
+        Predicting academic success using supervised learning techniques.
+    </p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <h3><i class="fas fa-exclamation-triangle"></i> Problem</h3>
+        <p style="color: var(--text-dim); margin-top: 10px; line-height: 1.6;">
+            Educational institutions often struggle to identify students at risk of failing.
+            Without early detection, providing timely academic support becomes difficult.
+        </p>
+    </div>
+
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <h3><i class="fas fa-layer-group"></i> Machine Learning Type</h3>
+        <p style="margin-top: 10px;"><strong>Supervised Learning — Regression</strong></p>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">
+            The model predicts a continuous value:
+            <br>• <span style="color: var(--accent);">Final Score</span> (0 - 100)
+        </p>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-microchip"></i> Algorithms</h3>
+        <ul style="color: var(--text-dim); margin-top: 10px; padding-left: 20px;">
+            <li><strong>Linear Regression:</strong> Simple and effective baseline model.</li>
+            <li style="margin: 8px 0;"><strong>Decision Trees:</strong> Capture non-linear patterns.</li>
+            <li><strong>Random Forest:</strong> Improves accuracy and robustness.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-database"></i> Input Data (Features)</h3>
+        <ul style="color: var(--text-dim); margin-top: 10px; padding-left: 20px;">
+            <li>Study hours per week</li>
+            <li>Attendance percentage</li>
+            <li>Assignments completed</li>
+            <li>Previous exam scores</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 25px; border-top: 5px solid var(--accent);">
+    <h3><i class="fas fa-chart-line"></i> Real-World Impact</h3>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px; text-align: center;">
+        <div>
+            <h4 style="color: var(--accent);">Early Detection</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Identify struggling students.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Better Support</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Personalized academic help.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Performance</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Improve student outcomes.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

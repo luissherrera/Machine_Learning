@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 25px;">
+    <h1 style="font-size: 2.2rem; color: var(--accent); text-align: center; margin-bottom: 10px;">
+        Facial Recognition for Device Unlocking
+    </h1>
+    <p style="text-align: center; color: var(--text-dim);">
+        Secure and fast biometric authentication using Computer Vision.
+    </p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <h3><i class="fas fa-exclamation-triangle"></i> Problem</h3>
+        <p style="color: var(--text-dim); margin-top: 10px; line-height: 1.6;">
+            Users require quick and secure access to their devices. Traditional authentication methods such as PINs or passwords can be slow and vulnerable.
+        </p>
+    </div>
+
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <h3><i class="fas fa-layer-group"></i> Machine Learning Type</h3>
+        <p style="margin-top: 10px;"><strong>Computer Vision — Classification</strong></p>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">
+            The system analyzes facial features to determine:
+            <br>• <span style="color: var(--accent);">Match</span> = Authorized user
+            <br>• <span style="color: var(--accent);">No Match</span> = Access denied
+        </p>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-microchip"></i> Algorithms</h3>
+        <ul style="color: var(--text-dim); margin-top: 10px; padding-left: 20px;">
+            <li><strong>CNN (Convolutional Neural Networks):</strong> Image feature extraction.</li>
+            <li style="margin: 8px 0;"><strong>Face Embeddings:</strong> Numerical representation of faces.</li>
+            <li><strong>Similarity Metrics:</strong> Compare facial distances.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-database"></i> Input Data (Features)</h3>
+        <ul style="color: var(--text-dim); margin-top: 10px; padding-left: 20px;">
+            <li>Facial images (RGB / Infrared)</li>
+            <li>Depth sensors (3D face mapping)</li>
+            <li>Facial landmarks (eyes, nose, mouth)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 25px; border-top: 5px solid var(--accent);">
+    <h3><i class="fas fa-chart-line"></i> Real-World Impact</h3>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px; text-align: center;">
+        <div>
+            <h4 style="color: var(--accent);">Security</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Prevents unauthorized access.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Speed</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Unlock in milliseconds.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Convenience</h4>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">No need for passwords.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
