@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Academy Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-header">ML ACADEMY</div>
+    
+    <nav class="nav-menu">
+        <a href="/" class="nav-item">
+            <span><i class="fas fa-home"></i> Home</span>
+        </a>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-project-diagram"></i> ML Use Cases</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="/case1">Use Case 1</a>
+            <a href="/case2">Use Case 2</a>
+            <a href="/case3">Use Case 3</a>
+            <a href="/case4">Use Case 4</a>
+        </div>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-brain"></i> Supervised ML</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <div class="model-section-label">Linear Regression</div>
+            <a href="/lr/concepts">Basic Concepts</a>
+            <a href="/lr/application">Application</a>
+
+            <div class="model-section-label">Logistic Regression</div>
+            <a href="/logistic/concepts">Basic Concepts</a>
+            <a href="/logistic/application">Application</a>
+
+            <div class="model-section-label">Assigned Model</div>
+            <a href="/assigned/concepts">Basic Concepts</a>
+            <a href="/assigned/application">Application</a>
+        </div>
+    </nav>
+</div>
+
+<div class="main-content">
+    {% block content %}{% endblock %}
+</div>
+
+<script>
+    /* Lógica para abrir/cerrar los menús desplegables */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    for (var i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

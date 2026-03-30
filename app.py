@@ -1,57 +1,47 @@
 from flask import Flask, render_template, request
 import LinealRegresion
+import LinealRegresionNetflix
+# Importar aquí tu futura lógica de Logística cuando esté lista
+# import LogisticRegresion 
 
 app = Flask(__name__)
+
+# --- MAIN ROUTES ---
 
 @app.route('/')
 def home():
     return render_template("home.html")
 
-# Página opcional
-@app.route('/FirstPage')
-def firstPage():
-    return render_template('index.html')
+# --- ML USE CASES (1-4) ---
 
-# -------------------------------
-# Página de Casos de Uso (Dashboard)
-# -------------------------------
-@app.route('/use_cases')
-def use_cases():
-    return render_template("use_cases.html")
+@app.route('/case1')
+def case1():
+    return render_template('case1.html')
 
-# -------------------------------
-# Página de Conceptos
-# -------------------------------
-@app.route('/lr/conceptos')
-def conceptos():
-    return render_template("conceptos.html")
+@app.route('/case2')
+def case2():
+    return render_template('case2.html')
 
-# -------------------------------
-# Rutas de los casos individuales
-# -------------------------------
-@app.route('/caso1')
-def caso1():
-    return render_template('caso1.html')
+@app.route('/case3')
+def case3():
+    return render_template('case3.html')
 
-@app.route('/caso2')
-def caso2():
-    return render_template('caso2.html')
+@app.route('/case4')
+def case4():
+    return render_template('case4.html')
 
-@app.route('/caso3')
-def caso3():
-    return render_template('caso3.html')
+# --- SUPERVISED MACHINE LEARNING SECTIONS ---
 
-@app.route('/caso4')
-def caso4():
-    return render_template('caso4.html')
+# 1. Linear Regression
+@app.route('/lr/concepts')
+def lr_concepts():
+    return render_template("lr_concepts.html")
 
-# -------------------------------
-# Ruta de predicción LinealRegresion
-# -------------------------------
-@app.route('/LinealRegresion', methods=["GET", "POST"])
-def calculateGrade():
+@app.route('/lr/application', methods=["GET", "POST"])
+def lr_application():
     resultado = None
     if request.method == "POST":
+        # Extraer datos del formulario (asegúrate de que los 'name' en HTML coincidan)
         edad = float(request.form["edad"])
         ingreso = float(request.form["ingreso"])
         visitas = float(request.form["visitas"])
@@ -62,23 +52,38 @@ def calculateGrade():
         resultado = LinealRegresion.predecir_cliente(
             edad, ingreso, visitas, tiempo, compras, descuento
         )
+    # Cambié el nombre del template a uno más descriptivo si deseas renombrarlo
+    return render_template("linealRegresionGrades.html", result=resultado)
 
-    return render_template("linealRegresionGrades.html", result=calculateResults)
+# 2. Logistic Regression
+@app.route('/logistic/concepts')
+def logistic_concepts():
+    return render_template("logistic_concepts.html")
 
-# -------------------------------
-# Ruta de predicción Netflix
-# -------------------------------
-@app.route('/LinealRegresionNetflix', methods=["GET", "POST"])
+@app.route('/logistic/application', methods=["GET", "POST"])
+def logistic_application():
+    resultado = None
+    # Aquí irá la lógica de predicción de tu CSV de logística
+    return render_template("logistic_app.html", result=resultado)
+
+# 3. Assigned Model (Example: KNN or SVM)
+@app.route('/assigned/concepts')
+def assigned_concepts():
+    return render_template("assigned_concepts.html")
+
+@app.route('/assigned/application')
+def assigned_application():
+    return render_template("assigned_app.html")
+
+# --- OTHER ROUTES ---
+
+@app.route('/netflix', methods=["GET", "POST"])
 def predictNetflix():
     resultado = None
     if request.method == "POST":
         descripcion = request.form.get("descripcion")
-        import LinealRegresionNetflix
         resultado = LinealRegresionNetflix.predecir_genero(descripcion)
     return render_template("linealregresionnetflix.html", result=resultado)
 
-# -------------------------------
-# Ejecutar app
-# -------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
