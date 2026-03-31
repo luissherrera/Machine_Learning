@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="card" style="text-align:center; margin-bottom: 25px;">
+    <h1 style="font-size: 2.5rem; color: var(--accent);">
+        Assigned Classification Model
+    </h1>
+    <p style="color: var(--text-dim);">
+        Predict student performance using Machine Learning
+    </p>
+</div>
+
+<!-- GRID PRINCIPAL -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+    <!-- PROBLEM -->
+    <div class="card">
+        <h3>📌 Problem</h3>
+        <p style="color: var(--text-dim);">
+            Predict whether a student will pass or fail based on academic behavior.
+        </p>
+    </div>
+
+    <!-- DATASET -->
+    <div class="card">
+        <h3>📊 Dataset</h3>
+        <p style="color: var(--text-dim);">
+            Student Performance dataset with features like study time, failures and absences.
+        </p>
+    </div>
+
+    <!-- VARIABLES -->
+    <div class="card">
+        <h3>🧠 Variables</h3>
+        <ul style="color: var(--text-dim);">
+            <li>Study Time</li>
+            <li>Failures</li>
+            <li>Absences</li>
+        </ul>
+    </div>
+
+    <!-- MODEL -->
+    <div class="card">
+        <h3>🤖 Model</h3>
+        <p style="color: var(--text-dim);">
+            Nearest Centroid classification algorithm.
+        </p>
+    </div>
+
+</div>
+
+<!-- FORM -->
+<div class="card" style="margin-top: 25px; text-align:center;">
+    <h3>🎯 Make a Prediction</h3>
+
+    <form method="POST" style="margin-top: 15px;">
+        <input type="number" name="studytime" placeholder="Study Time (1-4)" required>
+        <input type="number" name="failures" placeholder="Failures" required>
+        <input type="number" name="absences" placeholder="Absences" required>
+
+        <br><br>
+
+        <button type="submit" style="
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;">
+            Predict
+        </button>
+    </form>
+
+    {% if result is not none %}
+        <div style="margin-top: 20px;">
+            <h2 style="
+                padding: 10px;
+                border-radius: 10px;
+                background: {{ '#28a745' if result == 1 else '#dc3545' }};
+                color: white;
+                display: inline-block;">
+                
+                {{ "PASS ✅" if result == 1 else "FAIL ❌" }}
+            </h2>
+        </div>
+    {% endif %}
+</div>
+
+<!-- MÉTRICAS -->
+<div class="card" style="margin-top: 25px;">
+    <h3>📈 Model Performance</h3>
+
+    <div style="display: flex; justify-content: space-around; margin-top: 15px; text-align:center;">
+        <div>
+            <h4 style="color: var(--accent);">Accuracy</h4>
+            <p>{{ metrics[0] if metrics else "0.00" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Precision</h4>
+            <p>{{ metrics[1] if metrics else "0.00" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Recall</h4>
+            <p>{{ metrics[2] if metrics else "0.00" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">F1 Score</h4>
+            <p>{{ metrics[3] if metrics else "0.00" }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- MATRIZ -->
+<div class="card" style="margin-top: 25px; text-align:center;">
+    <h3>📉 Confusion Matrix</h3>
+    <img src="{{ url_for('static', filename='confusion_matrix.png') }}" width="350">
+</div>
+
+<!-- INTERPRETACIÓN -->
+<div class="card" style="margin-top: 25px;">
+    <h3>🧾 Interpretation</h3>
+    <p style="color: var(--text-dim);">
+        The model identifies patterns in student behavior and classifies them into pass or fail categories.
+        This allows early detection of at-risk students.
+    </p>
+</div>
+
+{% endblock %}
