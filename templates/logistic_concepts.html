@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Regression - Concepts</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #111827; /* dark background */
+            color: #f9fafb; /* light text */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background-color: #1f2937;
+            color: #f9fafb;
+            position: fixed;
+            height: 100%;
+            padding-top: 20px;
+        }
+
+        .sidebar-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu a, .dropdown-btn {
+            display: block;
+            color: #f9fafb;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover, .dropdown-btn:hover {
+            background-color: #374151;
+        }
+
+        .dropdown-container {
+            display: none;
+            background-color: #2d3748;
+            padding-left: 15px;
+        }
+
+        .model-section-label {
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+            font-size: 0.9em;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .card {
+            background-color: #1f2937; /* dark card */
+            border-radius: 12px;
+            padding: 25px 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #374151;
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        ol li {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-header">ML ACADEMY</div>
+    
+    <nav class="nav-menu">
+        <a href="{{ url_for('home') }}" class="nav-item">
+            <span><i class="fas fa-home"></i> Home</span>
+        </a>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-project-diagram"></i> ML Use Cases</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{{ url_for('case1') }}">Use Case 1</a>
+            <a href="{{ url_for('case2') }}">Use Case 2</a>
+            <a href="{{ url_for('case3') }}">Use Case 3</a>
+            <a href="{{ url_for('case4') }}">Use Case 4</a>
+        </div>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-brain"></i> Supervised ML</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+        <div class="dropdown-container">
+
+            <div class="model-section-label">Linear Regression</div>
+            <a href="{{ url_for('linear_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('linear_application') }}">Application</a>
+
+            <div class="model-section-label">Logistic Regression</div>
+            <a href="{{ url_for('logistic_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('logistic_application') }}">Application</a>
+
+            <div class="model-section-label">Assigned Model</div>
+            <a href="{{ url_for('assigned_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('assigned_application') }}">Application</a>
+
+        </div>
+    </nav>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="card">
+
+        <h1>Logistic Regression - Basic Concepts</h1>
+
+        <ol>
+            <li>
+                <h2>What is <strong>Logistic Regression</strong>?</h2>
+                <hr>
+                <p>
+                    <strong>Logistic Regression</strong> is a supervised machine learning algorithm used for <strong>classifying data</strong>.
+                    Instead of predicting exact numbers, it gives the <strong>probability</strong> that something belongs to one class or another.
+                    For example, it can show the probability that an email is spam or that a client will pay a loan.
+                </p>
+            </li>
+
+            <li>
+                <h2>Difference between <strong>Regression</strong> and <strong>Classification</strong></h2>
+                <hr>
+                <p>
+                    Regression models predict continuous values, like a person's salary or temperature.  
+                    Classification models, like Logistic Regression, predict categories, such as pass/fail, buy/not buy, or sick/healthy.
+                </p>
+            </li>
+
+            <li>
+                <h2>Binary Classification</h2>
+                <hr>
+                <p>Binary classification works with <strong>two possible outcomes</strong>:</p>
+                <ul>
+                    <li><strong>0</strong> → Negative class, meaning the event did not happen or the condition is not met.</li>
+                    <li><strong>1</strong> → Positive class, meaning the event happened or the condition is met.</li>
+                </ul>
+            </li>
+
+            <li>
+                <h2>Target Variable / Class Label</h2>
+                <hr>
+                <p>
+                    The <strong>target variable</strong>, or <strong>class label</strong>, is what we want to predict.  
+                    For example, if we want to predict whether a client pays a loan, the target is “paid” or “not paid”.
+                </p>
+            </li>
+
+            <li>
+                <h2>Features / Predictors</h2>
+                <hr>
+                <p>
+                    <strong>Features</strong> or <strong>predictors</strong> are the inputs used to make predictions.  
+                    Examples include age, income, payment history, or work experience.  
+                    The model learns how these features relate to the target to make predictions.
+                </p>
+            </li>
+
+            <li>
+                <h2>Probability Estimation</h2>
+                <hr>
+                <p>
+                    Logistic Regression outputs probabilities between 0 and 1, showing how likely an instance belongs to a class.  
+                    For example, a prediction of <strong>0.8</strong> means there is an 80% chance the instance belongs to the positive class.
+                </p>
+            </li>
+
+            <li>
+                <h2>Decision Boundary</h2>
+                <hr>
+                <p>
+                    The <strong>decision boundary</strong> is the line or surface that separates the classes in the feature space.  
+                    Data on one side of the boundary is classified as one class, and data on the other side as the opposite class.
+                </p>
+            </li>
+
+            <li>
+                <h2>Classification Threshold</h2>
+                <hr>
+                <p>
+                    A <strong>threshold</strong> converts predicted probabilities into final class labels.  
+                    Typically, 0.5 is used: probabilities ≥ 0.5 are assigned to class 1, and probabilities < 0.5 go to class 0.
+                </p>
+                <ul>
+                    <li>If probability ≥ 0.5 → Class 1</li>
+                    <li>If probability &lt; 0.5 → Class 0</li>
+                </ul>
+            </li>
+
+            <li>
+                <h2>Real-world Use Example</h2>
+                <hr>
+                <p>
+                    Logistic Regression is used in finance, healthcare, and marketing.  
+                    For example, a bank can predict if a client will pay a loan based on age, income, and debt.  
+                    Hospitals can predict patient risk for certain diseases based on symptoms and medical tests.
+                </p>
+            </li>
+        </ol>
+
+    </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
