@@ -5,120 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logistic Regression - Concepts</title>
 
-    <!-- CSS -->
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     
-    <!-- ICONS -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #111827; /* dark background */
-            color: #f9fafb; /* light text */
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 220px;
-            background-color: #1f2937;
-            color: #f9fafb;
-            position: fixed;
-            height: 100%;
-            padding-top: 20px;
-        }
-
-        .sidebar-header {
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .nav-menu a, .dropdown-btn {
-            display: block;
-            color: #f9fafb;
-            padding: 12px 20px;
-            text-decoration: none;
-            font-size: 0.95em;
-            cursor: pointer;
-        }
-
-        .nav-menu a:hover, .dropdown-btn:hover {
-            background-color: #374151;
-        }
-
-        .dropdown-container {
-            display: none;
-            background-color: #2d3748;
-            padding-left: 15px;
-        }
-
-        .model-section-label {
-            font-weight: bold;
-            margin: 10px 0 5px 0;
-            font-size: 0.9em;
-        }
-
-        /* Main content */
-        .main-content {
-            margin-left: 240px;
-            padding: 30px;
-        }
-
-        .card {
-            background-color: #1f2937; /* dark card */
-            border-radius: 12px;
-            padding: 25px 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            font-weight: bold;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-weight: bold;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        hr {
-            border: none;
-            border-top: 2px solid #374151;
-            margin-bottom: 15px;
-        }
-
-        ul, ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        ul li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            font-weight: bold;
-        }
-
-        ol li {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
+
 <div class="sidebar">
     <div class="sidebar-header">ML ACADEMY</div>
     
     <nav class="nav-menu">
+
         <a href="{{ url_for('home') }}" class="nav-item">
             <span><i class="fas fa-home"></i> Home</span>
         </a>
@@ -157,107 +58,138 @@
     </nav>
 </div>
 
-<!-- MAIN CONTENT -->
 <div class="main-content">
+
     <div class="card">
 
-        <h1>Logistic Regression - Basic Concepts</h1>
+        <h1>📘 Logistic Regression - Basic Concepts</h1>
 
-        <ol>
-            <li>
-                <h2>What is <strong>Logistic Regression</strong>?</h2>
-                <hr>
-                <p>
-                    <strong>Logistic Regression</strong> is a supervised machine learning algorithm used for <strong>classifying data</strong>.
-                    Instead of predicting exact numbers, it gives the <strong>probability</strong> that something belongs to one class or another.
-                    For example, it can show the probability that an email is spam or that a client will pay a loan.
-                </p>
-            </li>
+        <h2>1. What is Logistic Regression</h2>
+        <hr>
+        <p>
+        <strong>Logistic Regression</strong> is a <strong>supervised machine learning algorithm</strong> used for 
+        <strong>classification tasks</strong>. Unlike linear regression, which predicts continuous numerical values, 
+        logistic regression predicts the <strong>probability</strong> that a given input belongs to a specific class.
+        </p>
 
-            <li>
-                <h2>Difference between <strong>Regression</strong> and <strong>Classification</strong></h2>
-                <hr>
-                <p>
-                    Regression models predict continuous values, like a person's salary or temperature.  
-                    Classification models, like Logistic Regression, predict categories, such as pass/fail, buy/not buy, or sick/healthy.
-                </p>
-            </li>
+        <p>
+        The model uses a <strong>sigmoid function</strong> to transform its output into values between 
+        <strong>0 and 1</strong>. These probabilities are then used to determine the final class label.
+        </p>
 
-            <li>
-                <h2>Binary Classification</h2>
-                <hr>
-                <p>Binary classification works with <strong>two possible outcomes</strong>:</p>
-                <ul>
-                    <li><strong>0</strong> → Negative class, meaning the event did not happen or the condition is not met.</li>
-                    <li><strong>1</strong> → Positive class, meaning the event happened or the condition is met.</li>
-                </ul>
-            </li>
+        <h2>2. Difference between regression and classification</h2>
+        <hr>
+        <p>
+        <strong>Regression</strong> models are used to predict <strong>continuous numerical values</strong>, 
+        such as prices, temperatures, or scores.
+        </p>
 
-            <li>
-                <h2>Target Variable / Class Label</h2>
-                <hr>
-                <p>
-                    The <strong>target variable</strong>, or <strong>class label</strong>, is what we want to predict.  
-                    For example, if we want to predict whether a client pays a loan, the target is “paid” or “not paid”.
-                </p>
-            </li>
+        <p>
+        In contrast, <strong>classification</strong> models predict <strong>discrete categories or labels</strong>, 
+        such as "yes" or "no", "spam" or "not spam".
+        </p>
 
-            <li>
-                <h2>Features / Predictors</h2>
-                <hr>
-                <p>
-                    <strong>Features</strong> or <strong>predictors</strong> are the inputs used to make predictions.  
-                    Examples include age, income, payment history, or work experience.  
-                    The model learns how these features relate to the target to make predictions.
-                </p>
-            </li>
+        <p>
+        Although Logistic Regression contains the word "regression", it is mainly used for 
+        <strong>classification problems</strong>.
+        </p>
 
-            <li>
-                <h2>Probability Estimation</h2>
-                <hr>
-                <p>
-                    Logistic Regression outputs probabilities between 0 and 1, showing how likely an instance belongs to a class.  
-                    For example, a prediction of <strong>0.8</strong> means there is an 80% chance the instance belongs to the positive class.
-                </p>
-            </li>
+        <h2>3. Binary classification</h2>
+        <hr>
+        <p>
+        <strong>Binary classification</strong> refers to problems with only two possible outcomes.
+        </p>
 
-            <li>
-                <h2>Decision Boundary</h2>
-                <hr>
-                <p>
-                    The <strong>decision boundary</strong> is the line or surface that separates the classes in the feature space.  
-                    Data on one side of the boundary is classified as one class, and data on the other side as the opposite class.
-                </p>
-            </li>
+        <ul>
+            <li><strong>0</strong> → Negative class</li>
+            <li><strong>1</strong> → Positive class</li>
+        </ul>
 
-            <li>
-                <h2>Classification Threshold</h2>
-                <hr>
-                <p>
-                    A <strong>threshold</strong> converts predicted probabilities into final class labels.  
-                    Typically, 0.5 is used: probabilities ≥ 0.5 are assigned to class 1, and probabilities < 0.5 go to class 0.
-                </p>
-                <ul>
-                    <li>If probability ≥ 0.5 → Class 1</li>
-                    <li>If probability &lt; 0.5 → Class 0</li>
-                </ul>
-            </li>
+        <p>
+        This approach is widely used in applications such as spam detection, disease prediction, 
+        and fraud detection.
+        </p>
 
-            <li>
-                <h2>Real-world Use Example</h2>
-                <hr>
-                <p>
-                    Logistic Regression is used in finance, healthcare, and marketing.  
-                    For example, a bank can predict if a client will pay a loan based on age, income, and debt.  
-                    Hospitals can predict patient risk for certain diseases based on symptoms and medical tests.
-                </p>
-            </li>
-        </ol>
+        <h2>4. Target variable / class label</h2>
+        <hr>
+        <p>
+        The <strong>target variable</strong>, also known as the <strong>class label</strong>, 
+        is the output that the model is trying to predict.
+        </p>
+
+        <p>
+        It represents the category assigned to each observation. For example, in a loan prediction model, 
+        the target variable could be <strong>approved</strong> or <strong>not approved</strong>.
+        </p>
+
+        <h2>5. Features / predictors</h2>
+        <hr>
+        <p>
+        <strong>Features</strong>, also called <strong>predictors</strong>, are the input variables used by the model.
+        </p>
+
+        <p>
+        These variables help the model identify patterns and relationships. Examples include:
+        </p>
+
+        <ul>
+            <li>Age</li>
+            <li>Income</li>
+            <li>Work experience</li>
+        </ul>
+
+        <h2>6. Probability estimation</h2>
+        <hr>
+        <p>
+        Logistic Regression produces <strong>probability values between 0 and 1</strong>.
+        </p>
+
+        <p>
+        For example, a prediction of <strong>0.85</strong> indicates an <strong>85% probability</strong> 
+        that the observation belongs to class 1.
+        </p>
+
+        <h2>7. Decision boundary</h2>
+        <hr>
+        <p>
+        The <strong>decision boundary</strong> is the line or surface that separates different classes.
+        </p>
+
+        <p>
+        It defines how the model distinguishes between categories based on the input data.
+        </p>
+
+        <h2>8. Classification threshold</h2>
+        <hr>
+        <p>
+        The <strong>classification threshold</strong> is used to convert probabilities into class labels.
+        </p>
+
+        <p>
+        The most common threshold is <strong>0.5</strong>:
+        </p>
+
+        <ul>
+            <li>If probability ≥ 0.5 → <strong>Class 1</strong></li>
+            <li>If probability &lt; 0.5 → <strong>Class 0</strong></li>
+        </ul>
+
+        <h2>9. Real-world use example</h2>
+        <hr>
+        <p>
+        Logistic Regression is widely used in the <strong>banking sector</strong> to predict whether a customer 
+        will repay a loan.
+        </p>
+
+        <p>
+        The model analyzes variables such as <strong>income, credit history, and debt level</strong> 
+        to estimate the probability of repayment and support decision-making.
+        </p>
 
     </div>
+
 </div>
 
-<!-- SCRIPT -->
 <script>
 var dropdown = document.getElementsByClassName("dropdown-btn");
 for (var i = 0; i < dropdown.length; i++) {
