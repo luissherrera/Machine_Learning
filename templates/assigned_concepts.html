@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigned Classification Model – Basic Concepts</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #111827; /* dark background */
+            color: #f9fafb; /* light text */
+        }
+
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .card {
+            background-color: #1f2937; /* dark card */
+            border-radius: 12px;
+            padding: 25px 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #374151;
+            margin-bottom: 15px;
+        }
+
+        ol li {
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-content">
+    <div class="card">
+
+        <h1>Assigned Classification Model – Basic Concepts</h1>
+
+        <ol>
+            <li>
+                <h2>What the model is (Nearest Centroid)</h2>
+                <hr>
+                <p>
+                    <strong>Nearest Centroid</strong> is a very simple supervised classification algorithm.  
+                    The main idea is that each class has a <strong>centroid</strong>, which is basically the average of all feature values in that class.  
+                    When a new data point comes in, the algorithm assigns it to the class whose centroid is closest.  
+                    This method is intuitive and fast, especially when classes form <strong>well-defined groups</strong> in the data.
+                </p>
+            </li>
+
+            <li>
+                <h2>How it works in general terms</h2>
+                <hr>
+                <p>
+                    First, the algorithm calculates the <strong>centroid</strong> for each class using all the training data.  
+                    Then, for any new observation, it measures the distance to each centroid and assigns the observation to the nearest class.  
+                    The most common distance metrics are <strong>Euclidean</strong> or <strong>Manhattan</strong>, depending on the data.  
+                    The advantage is that it doesn’t require complex or iterative training, making it very fast and easy to use.
+                </p>
+            </li>
+
+            <li>
+                <h2>Main characteristics</h2>
+                <hr>
+                <ul>
+                    <li>Simple and very fast to train and predict.</li>
+                    <li>Works best when classes are clearly separated and roughly spherical in the feature space.</li>
+                    <li>Non-parametric: it does not assume any specific data distribution.</li>
+                    <li>Can handle multi-class problems naturally.</li>
+                    <li>Consumes low memory and computational resources, even for medium-sized datasets.</li>
+                </ul>
+            </li>
+
+            <li>
+                <h2>Advantages and limitations</h2>
+                <hr>
+                <ul>
+                    <li><strong>Advantages:</strong> fast, easy to understand, few parameters to tune, low memory usage, suitable for small and medium datasets.</li>
+                    <li><strong>Limitations:</strong> sensitive to outliers, can perform poorly if classes overlap or have irregular shapes, less effective for high-dimensional sparse data without feature scaling.</li>
+                </ul>
+            </li>
+
+            <li>
+                <h2>Type of classification problems where it can be applied</h2>
+                <hr>
+                <p>
+                    Nearest Centroid is useful when classes are <strong>compact and well-separated</strong> in the data.  
+                    It works for both binary and multi-class classification tasks, especially when each feature meaningfully contributes to separating classes.  
+                    Typical applications include document classification, simple image recognition, or any situation where averaging each class’s data gives a meaningful representation.
+                </p>
+            </li>
+
+            <li>
+                <h2>Real-world use example</h2>
+                <hr>
+                <p>
+                    One practical example is document classification, where each document is represented as a vector of word frequencies or embeddings.  
+                    The algorithm assigns a document to the category whose centroid of word profiles is closest.  
+                    Another example is preliminary medical diagnosis, where patients are grouped based on key measurements like blood tests or vital signs, allowing for fast and interpretable classification.
+                </p>
+            </li>
+        </ol>
+
+    </div>
+</div>
+
+</body>
+</html>
