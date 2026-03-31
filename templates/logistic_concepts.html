@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Regression - Concepts</title>
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+
+<div class="sidebar">
+    <div class="sidebar-header">ML ACADEMY</div>
+    
+    <nav class="nav-menu">
+
+        <a href="{{ url_for('home') }}" class="nav-item">
+            <span><i class="fas fa-home"></i> Home</span>
+        </a>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-project-diagram"></i> ML Use Cases</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{{ url_for('case1') }}">Use Case 1</a>
+            <a href="{{ url_for('case2') }}">Use Case 2</a>
+            <a href="{{ url_for('case3') }}">Use Case 3</a>
+            <a href="{{ url_for('case4') }}">Use Case 4</a>
+        </div>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-brain"></i> Supervised ML</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+        <div class="dropdown-container">
+
+            <div class="model-section-label">Linear Regression</div>
+            <a href="{{ url_for('linear_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('linear_application') }}">Application</a>
+
+            <div class="model-section-label">Logistic Regression</div>
+            <a href="{{ url_for('logistic_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('logistic_application') }}">Application</a>
+
+            <div class="model-section-label">Assigned Model</div>
+            <a href="{{ url_for('assigned_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('assigned_application') }}">Application</a>
+
+        </div>
+    </nav>
+</div>
+
+<div class="main-content">
+
+    <div class="card">
+
+        <h1>📘 Logistic Regression - Basic Concepts</h1>
+
+        <h2>1. What is Logistic Regression</h2>
+        <hr>
+        <p>
+        <strong>Logistic Regression</strong> is a <strong>supervised machine learning algorithm</strong> used for 
+        <strong>classification tasks</strong>. Unlike linear regression, which predicts continuous numerical values, 
+        logistic regression predicts the <strong>probability</strong> that a given input belongs to a specific class.
+        </p>
+
+        <p>
+        The model uses a <strong>sigmoid function</strong> to transform its output into values between 
+        <strong>0 and 1</strong>. These probabilities are then used to determine the final class label.
+        </p>
+
+        <h2>2. Difference between regression and classification</h2>
+        <hr>
+        <p>
+        <strong>Regression</strong> models are used to predict <strong>continuous numerical values</strong>, 
+        such as prices, temperatures, or scores.
+        </p>
+
+        <p>
+        In contrast, <strong>classification</strong> models predict <strong>discrete categories or labels</strong>, 
+        such as "yes" or "no", "spam" or "not spam".
+        </p>
+
+        <p>
+        Although Logistic Regression contains the word "regression", it is mainly used for 
+        <strong>classification problems</strong>.
+        </p>
+
+        <h2>3. Binary classification</h2>
+        <hr>
+        <p>
+        <strong>Binary classification</strong> refers to problems with only two possible outcomes.
+        </p>
+
+        <ul>
+            <li><strong>0</strong> → Negative class</li>
+            <li><strong>1</strong> → Positive class</li>
+        </ul>
+
+        <p>
+        This approach is widely used in applications such as spam detection, disease prediction, 
+        and fraud detection.
+        </p>
+
+        <h2>4. Target variable / class label</h2>
+        <hr>
+        <p>
+        The <strong>target variable</strong>, also known as the <strong>class label</strong>, 
+        is the output that the model is trying to predict.
+        </p>
+
+        <p>
+        It represents the category assigned to each observation. For example, in a loan prediction model, 
+        the target variable could be <strong>approved</strong> or <strong>not approved</strong>.
+        </p>
+
+        <h2>5. Features / predictors</h2>
+        <hr>
+        <p>
+        <strong>Features</strong>, also called <strong>predictors</strong>, are the input variables used by the model.
+        </p>
+
+        <p>
+        These variables help the model identify patterns and relationships. Examples include:
+        </p>
+
+        <ul>
+            <li>Age</li>
+            <li>Income</li>
+            <li>Work experience</li>
+        </ul>
+
+        <h2>6. Probability estimation</h2>
+        <hr>
+        <p>
+        Logistic Regression produces <strong>probability values between 0 and 1</strong>.
+        </p>
+
+        <p>
+        For example, a prediction of <strong>0.85</strong> indicates an <strong>85% probability</strong> 
+        that the observation belongs to class 1.
+        </p>
+
+        <h2>7. Decision boundary</h2>
+        <hr>
+        <p>
+        The <strong>decision boundary</strong> is the line or surface that separates different classes.
+        </p>
+
+        <p>
+        It defines how the model distinguishes between categories based on the input data.
+        </p>
+
+        <h2>8. Classification threshold</h2>
+        <hr>
+        <p>
+        The <strong>classification threshold</strong> is used to convert probabilities into class labels.
+        </p>
+
+        <p>
+        The most common threshold is <strong>0.5</strong>:
+        </p>
+
+        <ul>
+            <li>If probability ≥ 0.5 → <strong>Class 1</strong></li>
+            <li>If probability &lt; 0.5 → <strong>Class 0</strong></li>
+        </ul>
+
+        <h2>9. Real-world use example</h2>
+        <hr>
+        <p>
+        Logistic Regression is widely used in the <strong>banking sector</strong> to predict whether a customer 
+        will repay a loan.
+        </p>
+
+        <p>
+        The model analyzes variables such as <strong>income, credit history, and debt level</strong> 
+        to estimate the probability of repayment and support decision-making.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
