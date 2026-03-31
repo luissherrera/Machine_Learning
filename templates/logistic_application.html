@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="card" style="text-align:center; margin-bottom: 25px;">
+    <h1 style="font-size: 2.5rem; color: var(--accent);">
+        Logistic Regression Model
+    </h1>
+    <p style="color: var(--text-dim);">
+        Predict customer churn using Machine Learning
+    </p>
+</div>
+
+<!-- GRID PRINCIPAL -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+    <div class="card">
+        <h3>📌 Problem</h3>
+        <p style="color: var(--text-dim);">
+            Predict whether a customer will leave the service (churn) based on usage and billing behavior.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>📊 Dataset</h3>
+        <p style="color: var(--text-dim);">
+            Telco Customer Churn dataset with information about customer tenure and charges.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🧠 Variables</h3>
+        <ul style="color: var(--text-dim);">
+            <li>Tenure</li>
+            <li>Monthly Charges</li>
+            <li>Total Charges</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>🤖 Model</h3>
+        <p style="color: var(--text-dim);">
+            Logistic Regression classification algorithm.
+        </p>
+    </div>
+
+</div>
+
+<!-- FORM -->
+<div class="card" style="margin-top: 25px; text-align:center;">
+    <h3>🎯 Make a Prediction</h3>
+
+    <form method="POST" style="margin-top: 15px;">
+        <input type="number" name="tenure" placeholder="Tenure" required>
+        <input type="number" name="MonthlyCharges" placeholder="Monthly Charges" required>
+        <input type="number" name="TotalCharges" placeholder="Total Charges" required>
+
+        <br><br>
+
+        <button type="submit" style="background: var(--accent); color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">
+            Predict
+        </button>
+    </form>
+
+    {% if prediction %}
+        <div style="margin-top: 20px;">
+            {% if prediction == 'Churn' %}
+                <h2 style="padding: 10px; border-radius: 10px; background: #dc3545; color: white; display: inline-block;">
+                    {{ prediction }} ({{ probability or 0 }}%)
+                </h2>
+            {% else %}
+                <h2 style="padding: 10px; border-radius: 10px; background: #28a745; color: white; display: inline-block;">
+                    {{ prediction }} ({{ probability or 0 }}%)
+                </h2>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<!-- MÉTRICAS -->
+<div class="card" style="margin-top: 25px;">
+    <h3>📈 Model Performance</h3>
+
+    <div style="display: flex; justify-content: space-around; margin-top: 15px; text-align:center;">
+        <div>
+            <h4 style="color: var(--accent);">Accuracy</h4>
+            <p>{{ accuracy or "N/A" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Precision</h4>
+            <p>{{ precision or "N/A" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">Recall</h4>
+            <p>{{ recall or "N/A" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">F1 Score</h4>
+            <p>{{ f1 or "N/A" }}</p>
+        </div>
+        <div>
+            <h4 style="color: var(--accent);">AUC</h4>
+            <p>{{ auc or "N/A" }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- MATRIZ -->
+{% if accuracy %}
+<div class="card" style="margin-top: 25px; text-align:center;">
+    <h3>📉 Confusion Matrix</h3>
+    <img src="{{ url_for('static', filename='confusion_matrix.png') }}" width="350">
+</div>
+{% endif %}
+
+<!-- ROC -->
+{% if accuracy %}
+<div class="card" style="margin-top: 25px; text-align:center;">
+    <h3>📊 ROC Curve</h3>
+    <img src="{{ url_for('static', filename='roc_curve.png') }}" width="350">
+</div>
+{% endif %}
+
+<!-- INTERPRETACIÓN -->
+<div class="card" style="margin-top: 25px;">
+    <h3>🧾 Interpretation</h3>
+    <p style="color: var(--text-dim);">
+        The model predicts customer churn behavior. High accuracy and AUC indicate strong performance.
+        Precision measures correct churn predictions, while recall measures how many actual churn cases are detected.
+    </p>
+</div>
+
+{% endblock %}
