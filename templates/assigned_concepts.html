@@ -10,133 +10,131 @@
     
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #111827; /* dark background */
-            color: #f9fafb; /* light text */
-        }
-
-        .main-content {
-            margin-left: 240px;
-            padding: 30px;
-        }
-
-        .card {
-            background-color: #1f2937; /* dark card */
-            border-radius: 12px;
-            padding: 25px 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            font-weight: bold;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-weight: bold;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        hr {
-            border: none;
-            border-top: 2px solid #374151;
-            margin-bottom: 15px;
-        }
-
-        ol li {
-            margin-bottom: 20px;
-        }
-
-        ul li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            font-weight: bold;
-        }
-    </style>
 </head>
+
 <body>
 
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-header">ML ACADEMY</div>
+    
+    <nav class="nav-menu">
+
+        <a href="{{ url_for('home') }}" class="nav-item">
+            <span><i class="fas fa-home"></i> Home</span>
+        </a>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-project-diagram"></i> ML Use Cases</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{{ url_for('case1') }}">Use Case 1</a>
+            <a href="{{ url_for('case2') }}">Use Case 2</a>
+            <a href="{{ url_for('case3') }}">Use Case 3</a>
+            <a href="{{ url_for('case4') }}">Use Case 4</a>
+        </div>
+
+        <button class="dropdown-btn">
+            <span><i class="fas fa-brain"></i> Supervised ML</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+        <div class="dropdown-container">
+
+            <div class="model-section-label">Linear Regression</div>
+            <a href="{{ url_for('linear_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('linear_application') }}">Application</a>
+
+            <div class="model-section-label">Logistic Regression</div>
+            <a href="{{ url_for('logistic_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('logistic_application') }}">Application</a>
+
+            <div class="model-section-label">Assigned Model</div>
+            <a href="{{ url_for('assigned_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('assigned_application') }}">Application</a>
+
+        </div>
+    </nav>
+</div>
+
+<!-- MAIN CONTENT -->
 <div class="main-content">
+
     <div class="card">
 
-        <h1>Assigned Classification Model – Basic Concepts</h1>
+        <h1>📘 Assigned Classification Model – Basic Concepts</h1>
 
-        <ol>
-            <li>
-                <h2>What the model is (Nearest Centroid)</h2>
-                <hr>
-                <p>
-                    <strong>Nearest Centroid</strong> is a very simple supervised classification algorithm.  
-                    The main idea is that each class has a <strong>centroid</strong>, which is basically the average of all feature values in that class.  
-                    When a new data point comes in, the algorithm assigns it to the class whose centroid is closest.  
-                    This method is intuitive and fast, especially when classes form <strong>well-defined groups</strong> in the data.
-                </p>
-            </li>
+        <h2>1. What the model is (Nearest Centroid)</h2>
+        <hr>
+        <p>
+            <strong>Nearest Centroid</strong> is a simple supervised classification algorithm.  
+            Each class has a <strong>centroid</strong>, the average of all feature values in that class.  
+            A new data point is assigned to the class whose centroid is closest.  
+            This method is intuitive, fast, and works well when classes form <strong>well-defined groups</strong>.
+        </p>
 
-            <li>
-                <h2>How it works in general terms</h2>
-                <hr>
-                <p>
-                    First, the algorithm calculates the <strong>centroid</strong> for each class using all the training data.  
-                    Then, for any new observation, it measures the distance to each centroid and assigns the observation to the nearest class.  
-                    The most common distance metrics are <strong>Euclidean</strong> or <strong>Manhattan</strong>, depending on the data.  
-                    The advantage is that it doesn’t require complex or iterative training, making it very fast and easy to use.
-                </p>
-            </li>
+        <h2>2. How it works in general terms</h2>
+        <hr>
+        <p>
+            First, the algorithm calculates the <strong>centroid</strong> for each class using the training data.  
+            Then, for any new observation, it measures the distance to each centroid and assigns the observation to the nearest class.  
+            Common distance metrics include <strong>Euclidean</strong> and <strong>Manhattan</strong>.  
+            It does not require iterative training, making it fast and easy to use.
+        </p>
 
-            <li>
-                <h2>Main characteristics</h2>
-                <hr>
-                <ul>
-                    <li>Simple and very fast to train and predict.</li>
-                    <li>Works best when classes are clearly separated and roughly spherical in the feature space.</li>
-                    <li>Non-parametric: it does not assume any specific data distribution.</li>
-                    <li>Can handle multi-class problems naturally.</li>
-                    <li>Consumes low memory and computational resources, even for medium-sized datasets.</li>
-                </ul>
-            </li>
+        <h2>3. Main characteristics</h2>
+        <hr>
+        <ul>
+            <li>Simple and fast to train and predict.</li>
+            <li>Works best when classes are clearly separated and roughly spherical.</li>
+            <li>Non-parametric: no assumption about data distribution.</li>
+            <li>Handles multi-class problems naturally.</li>
+            <li>Low memory and computational cost, even for medium-sized datasets.</li>
+        </ul>
 
-            <li>
-                <h2>Advantages and limitations</h2>
-                <hr>
-                <ul>
-                    <li><strong>Advantages:</strong> fast, easy to understand, few parameters to tune, low memory usage, suitable for small and medium datasets.</li>
-                    <li><strong>Limitations:</strong> sensitive to outliers, can perform poorly if classes overlap or have irregular shapes, less effective for high-dimensional sparse data without feature scaling.</li>
-                </ul>
-            </li>
+        <h2>4. Advantages and limitations</h2>
+        <hr>
+        <ul>
+            <li><strong>Advantages:</strong> fast, easy to understand, few parameters, low memory usage, suitable for small/medium datasets.</li>
+            <li><strong>Limitations:</strong> sensitive to outliers, performs poorly if classes overlap or have irregular shapes, less effective for high-dimensional sparse data without scaling.</li>
+        </ul>
 
-            <li>
-                <h2>Type of classification problems where it can be applied</h2>
-                <hr>
-                <p>
-                    Nearest Centroid is useful when classes are <strong>compact and well-separated</strong> in the data.  
-                    It works for both binary and multi-class classification tasks, especially when each feature meaningfully contributes to separating classes.  
-                    Typical applications include document classification, simple image recognition, or any situation where averaging each class’s data gives a meaningful representation.
-                </p>
-            </li>
+        <h2>5. Type of classification problems</h2>
+        <hr>
+        <p>
+            Nearest Centroid is useful when classes are <strong>compact and well-separated</strong>.  
+            Works for binary and multi-class tasks, especially when features meaningfully contribute to separation.  
+            Typical applications: document classification, simple image recognition, preliminary medical diagnosis.
+        </p>
 
-            <li>
-                <h2>Real-world use example</h2>
-                <hr>
-                <p>
-                    One practical example is document classification, where each document is represented as a vector of word frequencies or embeddings.  
-                    The algorithm assigns a document to the category whose centroid of word profiles is closest.  
-                    Another example is preliminary medical diagnosis, where patients are grouped based on key measurements like blood tests or vital signs, allowing for fast and interpretable classification.
-                </p>
-            </li>
-        </ol>
+        <h2>6. Real-world use example</h2>
+        <hr>
+        <p>
+            Example: document classification using word frequency vectors.  
+            Another example: preliminary medical diagnosis based on measurements like blood tests or vital signs, allowing fast, interpretable classification.
+        </p>
 
     </div>
+
 </div>
+
+<!-- SCRIPT -->
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+</script>
 
 </body>
 </html>
