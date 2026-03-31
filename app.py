@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 import LinealRegresion
 import LinealRegresionNetflix
 # import LogisticRegresion
-# import NearestCentroidModel
+import NearestCentroidModel
 
 app = Flask(__name__)
 
@@ -93,13 +93,22 @@ def assigned_concepts():
 def assigned_application():
 
     result = None
+    metrics = NearestCentroidModel.get_metrics()  # 🔥 NUEVO
 
     if request.method == "POST":
-        # Aquí conectarás Nearest Centroid
-        pass
+        studytime = float(request.form["studytime"])
+        failures = float(request.form["failures"])
+        absences = float(request.form["absences"])
 
-    return render_template('assigned_application.html', result=result)
+        result = NearestCentroidModel.predict_student(
+            studytime, failures, absences
+        )
 
+    return render_template(
+        "assigned_application.html",
+        result=result,
+        metrics=metrics  # 🔥 NUEVO
+    )
 
 # =========================
 # 🚀 RUN
