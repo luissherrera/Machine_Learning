@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="card" style="text-align:center; margin-bottom: 25px;">
+    <h1 style="font-size: 2.5rem; color: var(--accent);">
+        K-Means Clustering Concepts
+    </h1>
+    <p style="color: var(--text-dim);">
+        Understand how unsupervised learning groups similar data points
+    </p>
+</div>
+
+<!-- CONCEPT 1 -->
+<div class="card" style="margin-bottom: 20px;">
+    <h2>1. What is Clustering?</h2>
+    <p style="color: var(--text-dim); line-height: 1.6;">
+        Clustering is an <strong>unsupervised machine learning</strong> technique used to group a set of objects in such a way that objects in the same group (called a cluster) are more similar to each other than to those in other groups. It helps in discovering inherent structures or patterns in data without pre-existing labels.
+    </p>
+</div>
+
+<!-- CONCEPT 2 -->
+<div class="card" style="margin-bottom: 20px;">
+    <h2>2. What is K-Means?</h2>
+    <p style="color: var(--text-dim); line-height: 1.6;">
+        K-Means is one of the most popular clustering algorithms. The "K" refers to the number of clusters you want to define. The algorithm iteratively assigns each data point to one of K groups based on the features that are provided. Data points are clustered based on feature similarity.
+    </p>
+</div>
+
+<!-- CONCEPT 3 -->
+<div class="card" style="margin-bottom: 20px;">
+    <h2>3. How does K-Means work?</h2>
+    <ol style="color: var(--text-dim); line-height: 1.6; margin-left: 20px;">
+        <li><strong>Initialization:</strong> Choose <em>K</em> initial centroids (cluster centers) randomly.</li>
+        <li><strong>Assignment:</strong> Assign each data point to the cluster whose centroid is closest.</li>
+        <li><strong>Update:</strong> Recalculate the centroids by computing the mean of all data points assigned to each cluster.</li>
+        <li><strong>Repeat:</strong> Repeat steps 2 and 3 until the centroids no longer change significantly or a maximum number of iterations is reached.</li>
+    </ol>
+</div>
+
+<!-- NEXT BUTTON -->
+<div style="text-align: right;">
+    <a href="{{ url_for('clustering_application') }}" style="
+        display: inline-block;
+        background: var(--accent);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;">
+        Go to Application ➔
+    </a>
+</div>
+
+{% endblock %}

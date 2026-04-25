@@ -17,10 +17,14 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
-@app.route('/C')
-def clustering_view():
+@app.route('/clustering/concepts')
+def clustering_concepts():
+    return render_template('clustering_concepts.html')
+
+@app.route('/clustering/application', methods=["GET", "POST"])
+def clustering_application():
     info = Clustering.ApplyClusteringkmeans()
-    return str(info["results"])
+    return render_template('clustering_application.html', info=info)
 
 
 # =========================
