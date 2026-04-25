@@ -6,9 +6,14 @@ from sklearn.neighbors import NearestCentroid
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
+# 🔥 OBTENER DIRECTORIO ACTUAL
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 🔥 CARGAR DATASET
-df = pd.read_csv("dataset/student-mat.csv")
+dataset_path = os.path.join(BASE_DIR, "dataset", "student-mat.csv")
+df = pd.read_csv(dataset_path)
 
 # 🔥 LIMPIAR COLUMNAS
 df.columns = df.columns.str.strip()
@@ -48,7 +53,8 @@ plt.ylabel("Actual")
 plt.title("Confusion Matrix")
 
 # 🔥 GUARDAR IMAGEN
-plt.savefig("static/confusion_matrix.png")
+img_path = os.path.join(BASE_DIR, "static", "confusion_matrix.png")
+plt.savefig(img_path)
 plt.close()
 
 # 🔥 MÉTRICAS
