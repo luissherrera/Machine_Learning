@@ -5,6 +5,7 @@ import LinealRegresion
 import LinealRegresionNetflix
 # import LogisticRegresion
 import NearestCentroidModel
+import Clustering
 
 app = Flask(__name__)
 
@@ -15,6 +16,11 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template("home.html")
+
+@app.route('/C')
+def clustering_view():
+    info = Clustering.ApplyClusteringkmeans()
+    return str(info["results"])
 
 
 # =========================
