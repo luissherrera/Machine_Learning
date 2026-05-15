@@ -59,6 +59,19 @@
             <a href="{{ url_for('assigned_application') }}">Application</a>
 
         </div>
+
+        <!-- UNSUPERVISED ML -->
+        <button class="dropdown-btn">
+            <span><i class="fas fa-circle-nodes"></i> Unsupervised ML</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <div class="model-section-label">K-Means Clustering</div>
+            <a href="{{ url_for('unsupervised_concepts') }}">Basic Concepts</a>
+            <a href="{{ url_for('unsupervised_manual') }}">Manual Exercise</a>
+            <a href="{{ url_for('unsupervised_application') }}">Clustering Application</a>
+        </div>
+
     </nav>
 </div>
 
