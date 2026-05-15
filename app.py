@@ -3,9 +3,8 @@ from flask import Flask, render_template, request
 # Modelos
 import LinealRegresion
 import LinealRegresionNetflix
-# import LogisticRegresion
+import LogisticRegresion
 import NearestCentroidModel
-import Clustering
 
 app = Flask(__name__)
 
@@ -16,15 +15,6 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template("home.html")
-
-@app.route('/clustering/concepts')
-def clustering_concepts():
-    return render_template('clustering_concepts.html')
-
-@app.route('/clustering/application', methods=["GET", "POST"])
-def clustering_application():
-    info = Clustering.ApplyClusteringkmeans()
-    return render_template('clustering_application.html', info=info)
 
 
 # =========================
@@ -63,8 +53,8 @@ def linear_application():
     result = None
 
     if request.method == "POST":
-        hours = float(request.form["hours"])
-        result = LinealRegresion.calculateGrade(hours)
+        descripcion = request.form["descripcion"]
+        result = LinealRegresionNetflix.predecir_genero(descripcion)
 
     return render_template('linear_application.html', result=result)
 
@@ -84,8 +74,16 @@ def logistic_application():
     result = None
 
     if request.method == "POST":
-        # Aquí luego conectas tu modelo
-        pass
+        edad = float(request.form["edad"])
+        ingreso_mensual = float(request.form["ingreso_mensual"])
+        visitas_web_mes = float(request.form["visitas_web_mes"])
+        tiempo_sitio_min = float(request.form["tiempo_sitio_min"])
+        compras_previas = float(request.form["compras_previas"])
+        descuento_usado = float(request.form["descuento_usado"])
+
+        result = LogisticRegresion.predict_target(
+            edad, ingreso_mensual, visitas_web_mes, tiempo_sitio_min, compras_previas, descuento_usado
+        )
 
     return render_template('logistic_application.html', result=result)
 

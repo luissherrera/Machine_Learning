@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="text-align:center; margin-bottom: 25px;">
+    <h1 style="font-size: 2.5rem; color: var(--accent);">
+        Predicción de Compra (Regresión Logística)
+    </h1>
+    <p style="color: var(--text-dim);">
+        Ingresa los datos del cliente para predecir si realizará una compra o no utilizando nuestro modelo.
+    </p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 600px; margin: 0 auto;">
+    <div class="card">
+        <form method="POST" style="display: flex; flex-direction: column; align-items: stretch; gap: 15px;">
+            
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label for="edad" style="color: var(--text-main); font-weight: bold; margin-bottom: 5px;">Edad:</label>
+                <input type="number" id="edad" name="edad" required
+                    style="padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label for="ingreso_mensual" style="color: var(--text-main); font-weight: bold; margin-bottom: 5px;">Ingreso Mensual:</label>
+                <input type="number" step="0.01" id="ingreso_mensual" name="ingreso_mensual" required
+                    style="padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label for="visitas_web_mes" style="color: var(--text-main); font-weight: bold; margin-bottom: 5px;">Visitas a la Web por Mes:</label>
+                <input type="number" id="visitas_web_mes" name="visitas_web_mes" required
+                    style="padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label for="tiempo_sitio_min" style="color: var(--text-main); font-weight: bold; margin-bottom: 5px;">Tiempo en el Sitio (Minutos):</label>
+                <input type="number" step="0.1" id="tiempo_sitio_min" name="tiempo_sitio_min" required
+                    style="padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label for="compras_previas" style="color: var(--text-main); font-weight: bold; margin-bottom: 5px;">Compras Previas:</label>
+                <input type="number" id="compras_previas" name="compras_previas" required
+                    style="padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label for="descuento_usado" style="color: var(--text-main); font-weight: bold; margin-bottom: 5px;">Descuento Usado (0 o 1):</label>
+                <input type="number" id="descuento_usado" name="descuento_usado" min="0" max="1" required
+                    style="padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <button type="submit" 
+                style="background: var(--accent); color: var(--bg-dark); padding: 12px 24px; border: none; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;">
+                Realizar Predicción
+            </button>
+        </form>
+    </div>
+
+    {% if result is not none %}
+    <div class="card" style="text-align: center; border-left: 5px solid var(--accent);">
+        <h2 style="color: var(--accent); margin-bottom: 5px;">Resultado de la Predicción</h2>
+        <p style="font-size: 1.5rem; font-weight: bold; color: var(--text-main); margin-top: 5px;">
+            {{ result }}
+        </p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
