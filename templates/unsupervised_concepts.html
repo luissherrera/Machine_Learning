@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .page-header { margin-bottom: 35px; }
+  .page-header h1 { font-size: 2rem; color: var(--accent); margin-bottom: 8px; }
+  .page-header p  { color: var(--text-dim); font-size: 1rem; }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+  .concept-card {
+    background: var(--side-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color .2s;
+  }
+  .concept-card:hover { border-color: var(--accent); }
+  .concept-card .icon { font-size: 2rem; margin-bottom: 14px; }
+  .concept-card h3 { color: var(--accent); margin: 0 0 12px; font-size: 1.1rem; }
+  .concept-card p  { color: var(--text-dim); font-size: 0.92rem; line-height: 1.7; margin: 0; }
+
+  .formula-box {
+    background: #111827;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+    color: #fb923c;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .steps-list { list-style: none; padding: 0; counter-reset: step; }
+  .steps-list li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    color: var(--text-dim);
+    font-size: 0.93rem;
+    line-height: 1.7;
+  }
+  .steps-list li::before {
+    content: counter(step);
+    background: var(--accent);
+    color: #0f172a;
+    font-weight: bold;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .app-pill {
+    background: #111827;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .app-pill i { color: var(--accent); }
+
+  .section-card {
+    background: var(--side-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 28px;
+  }
+  .section-card h2 { color: var(--accent); margin-top: 0; font-size: 1.3rem; }
+</style>
+
+<div class="page-header">
+  <h1><i class="fas fa-circle-nodes"></i> Unsupervised Machine Learning</h1>
+  <p>Discover hidden patterns in data — no labels required.</p>
+</div>
+
+<!-- Core concepts grid -->
+<div class="concept-grid">
+  <div class="concept-card">
+    <div class="icon">🔍</div>
+    <h3>Unsupervised Learning</h3>
+    <p>A branch of Machine Learning where the algorithm learns from <strong style="color:#f1f5f9">unlabeled data</strong>. The model identifies patterns, structures, and relationships without any predefined output variable. The goal is to discover the inherent structure hidden within the dataset.</p>
+  </div>
+  <div class="concept-card">
+    <div class="icon">🫧</div>
+    <h3>Clustering</h3>
+    <p>A technique that groups similar data points together into <strong style="color:#f1f5f9">clusters</strong>. Points within the same cluster share common characteristics, while points from different clusters are dissimilar. Clustering enables segmentation and exploratory data analysis.</p>
+  </div>
+  <div class="concept-card">
+    <div class="icon">⚙️</div>
+    <h3>K-Means Algorithm</h3>
+    <p>The most popular clustering algorithm. It partitions data into <strong style="color:#f1f5f9">K groups</strong> by iteratively assigning each point to its nearest centroid and recalculating the centroids until convergence. Simple, scalable, and highly effective.</p>
+  </div>
+  <div class="concept-card">
+    <div class="icon">🎯</div>
+    <h3>Centroids</h3>
+    <p>A centroid is the <strong style="color:#f1f5f9">geometric center</strong> of a cluster — the mean of all data points assigned to that group. At each iteration, centroids are recalculated to minimize intra-cluster distance. They act as cluster "representatives".</p>
+  </div>
+  <div class="concept-card">
+    <div class="icon">📏</div>
+    <h3>Euclidean Distance</h3>
+    <p>The most common distance metric used in K-Means. It measures the straight-line distance between two points in feature space. Each data point is assigned to the cluster whose centroid is closest by Euclidean distance.</p>
+  </div>
+  <div class="concept-card">
+    <div class="icon">🔄</div>
+    <h3>Iterative Process</h3>
+    <p>K-Means alternates between two steps: <strong style="color:#f1f5f9">Assignment</strong> — each point is assigned to the nearest centroid, and <strong style="color:#f1f5f9">Update</strong> — centroids are recalculated as group means. This loop continues until cluster assignments stabilize.</p>
+  </div>
+</div>
+
+<!-- Euclidean Distance Formula -->
+<div class="section-card">
+  <h2><i class="fas fa-ruler"></i> Euclidean Distance Formula</h2>
+  <p style="color:var(--text-dim)">Given two points P = (x₁, y₁) and Q = (x₂, y₂) in a 2D feature space, the Euclidean distance is:</p>
+  <div class="formula-box">
+    d(P, Q) = √( (x₂ − x₁)² + (y₂ − y₁)² )
+  </div>
+  <p style="color:var(--text-dim); margin:0">This formula extends naturally to higher dimensions. In K-Means, each data point is assigned to the centroid with the smallest Euclidean distance.</p>
+</div>
+
+<!-- Iterative Process Steps -->
+<div class="section-card">
+  <h2><i class="fas fa-arrows-rotate"></i> K-Means Step-by-Step</h2>
+  <ul class="steps-list">
+    <li><strong style="color:#f1f5f9">Choose K</strong> — decide how many clusters to form and initialize K centroids (randomly or manually).</li>
+    <li><strong style="color:#f1f5f9">Calculate distances</strong> — for each data point, compute the Euclidean distance to every centroid.</li>
+    <li><strong style="color:#f1f5f9">Assign clusters</strong> — assign each point to the cluster of its nearest centroid.</li>
+    <li><strong style="color:#f1f5f9">Update centroids</strong> — recalculate each centroid as the mean of all points assigned to it.</li>
+    <li><strong style="color:#f1f5f9">Check convergence</strong> — if assignments did not change (or variance reduction is negligible), stop; otherwise return to step 2.</li>
+  </ul>
+</div>
+
+<!-- Variance & Convergence -->
+<div class="section-card">
+  <h2><i class="fas fa-chart-line"></i> Variance & Convergence</h2>
+  <p style="color:var(--text-dim)">K-Means minimizes <strong style="color:#f1f5f9">inertia</strong> (also called within-cluster sum of squared distances). After each iteration, the total variance decreases. When the reduction becomes negligible or zero, the algorithm has <strong style="color:#f1f5f9">converged</strong>. A variance plot across iterations visualizes this convergence.</p>
+  <div class="formula-box">
+    Variance = Σ d(xᵢ, centroid_k)²
+  </div>
+</div>
+
+<!-- Real-world applications -->
+<div class="section-card">
+  <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+  <div class="apps-grid">
+    <div class="app-pill"><i class="fas fa-users"></i> Customer Segmentation</div>
+    <div class="app-pill"><i class="fas fa-newspaper"></i> Document Clustering</div>
+    <div class="app-pill"><i class="fas fa-image"></i> Image Compression</div>
+    <div class="app-pill"><i class="fas fa-heartbeat"></i> Medical Diagnosis</div>
+    <div class="app-pill"><i class="fas fa-shield-halved"></i> Anomaly Detection</div>
+    <div class="app-pill"><i class="fas fa-chart-bar"></i> Market Analysis</div>
+    <div class="app-pill"><i class="fas fa-satellite"></i> Geospatial Mapping</div>
+    <div class="app-pill"><i class="fas fa-robot"></i> Recommendation Systems</div>
+  </div>
+</div>
+
+{% endblock %}
