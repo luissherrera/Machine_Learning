@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+:root {
+  --c0: #38bdf8;
+  --c1: #fb923c;
+  --c2: #a78bfa;
+}
+
+/* HEADER */
+.page-header { margin-bottom: 35px; }
+.page-header h1 { font-size: 2rem; color: var(--accent); margin-bottom: 8px; }
+.page-header p { color: var(--text-dim); }
+
+/* CARD */
+.section-card {
+  background: var(--side-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+/* TABLES */
+.tbl-wrap { overflow-x: auto; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th, td { padding: 8px; text-align: center; }
+thead th { background: #111827; color: var(--accent); }
+tbody td { border-bottom: 1px solid #1e293b; }
+
+/* CLUSTERS */
+.c0 { color: var(--c0); font-weight: bold; }
+.c1 { color: var(--c1); font-weight: bold; }
+.c2 { color: var(--c2); font-weight: bold; }
+
+/* BADGE */
+.iter-badge {
+  background: var(--accent);
+  color: #0f172a;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+}
+
+/* CENTROIDS */
+.centroid-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.centroid-pill {
+  background: #111827;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+/* BARS */
+.bar-chart {
+  display: flex;
+  gap: 20px;
+  height: 160px;
+  margin-top: 20px;
+}
+.bar-wrap {
+  flex: 1;
+  text-align: center;
+}
+.bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  min-height: 5px;
+  transition: all 0.3s;
+}
+.bar-value { font-size: 0.8rem; color: var(--accent); }
+.bar-label { font-size: 0.75rem; color: var(--text-dim); }
+
+/* COLORS */
+.bg-c0 { background: var(--c0); }
+.bg-c1 { background: var(--c1); }
+.bg-c2 { background: var(--c2); }
+
+</style>
+
+<div class="page-header">
+  <h1>Manual K-Means Exercise</h1>
+  <p>3 iterations simulation with clustering results.</p>
+</div>
+
+<!-- DATASET -->
+<div class="section-card">
+  <h2>Dataset</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Age</th><th>Income</th></tr>
+      </thead>
+      <tbody>
+        {% for i in range(0, 10) %}
+        <tr>
+          <td>{{ i+1 }}</td>
+          <td>{{ data.dataset[i][0] }}</td>
+          <td>{{ data.dataset[i][1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ITERATIONS -->
+{% for it in data.iterations %}
+<div class="section-card">
+
+  <div class="iter-badge">Iteration {{ it.iteration }}</div>
+
+  <h3>Centroids</h3>
+  <div class="centroid-row">
+    {% for c in it.centroids_before %}
+    <div class="centroid-pill">
+      C{{ loop.index0 }} → ({{ c[0] }}, {{ c[1]|int }})
+    </div>
+    {% endfor %}
+  </div>
+
+  <h3>Assignments</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Age</th><th>Income</th>
+          <th>d0</th><th>d1</th><th>d2</th><th>Cluster</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in it.rows[:15] %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ row.age }}</td>
+          <td>{{ row.income }}</td>
+          <td>{{ row.d0 }}</td>
+          <td>{{ row.d1 }}</td>
+          <td>{{ row.d2 }}</td>
+          <td class="c{{ row.cluster }}">{{ row.cluster }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Variance:</strong> {{ it.variance }}</p>
+
+</div>
+{% endfor %}
+
+<!-- VARIANCE -->
+<div class="section-card">
+  <h2>Variance</h2>
+
+  {% set max_v = data.variances | max %}
+
+  <div class="bar-chart">
+    {% for v in data.variances %}
+    {% set h = (v / max_v * 140) | int %}
+    <div class="bar-wrap">
+      <div class="bar-value">{{ v }}</div>
+
+      <div class="bar 
+        {% if loop.index==1 %}bg-c0
+        {% elif loop.index==2 %}bg-c1
+        {% else %}bg-c2
+        {% endif %}"
+        style="height: {{ h }}px;">
+      </div>
+
+      <div class="bar-label">Iter {{ loop.index }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}

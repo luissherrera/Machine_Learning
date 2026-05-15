@@ -3,8 +3,10 @@ from flask import Flask, render_template, request
 # Modelos
 import LinealRegresion
 import LinealRegresionNetflix
-# import LogisticRegresion
 import NearestCentroidModel
+import Clustering
+import kmeans_manual
+import kmeans_app
 
 app = Flask(__name__)
 
@@ -15,6 +17,11 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template("home.html")
+
+@app.route('/C')
+def clustering_view():
+    info = Clustering.ApplyClusteringkmeans()
+    return str(info["results"])
 
 
 # =========================
@@ -74,7 +81,6 @@ def logistic_application():
     result = None
 
     if request.method == "POST":
-        # Aquí luego conectas tu modelo
         pass
 
     return render_template('logistic_application.html', result=result)
@@ -93,7 +99,7 @@ def assigned_concepts():
 def assigned_application():
 
     result = None
-    metrics = NearestCentroidModel.get_metrics()  # 🔥 NUEVO
+    metrics = NearestCentroidModel.get_metrics()
 
     if request.method == "POST":
         studytime = float(request.form["studytime"])
@@ -107,8 +113,30 @@ def assigned_application():
     return render_template(
         "assigned_application.html",
         result=result,
-        metrics=metrics  # 🔥 NUEVO
+        metrics=metrics
     )
+
+
+# =========================
+# 🔵 UNSUPERVISED ML – K-MEANS
+# =========================
+
+@app.route('/unsupervised/concepts')
+def unsupervised_concepts():
+    return render_template('unsupervised_concepts.html')
+
+
+@app.route('/unsupervised/manual-exercise')
+def unsupervised_manual():
+    data = kmeans_manual.get_manual_data()
+    return render_template('unsupervised_manual.html', data=data)
+
+
+@app.route('/unsupervised/application')
+def unsupervised_application():
+    results = kmeans_app.run_clustering()
+    return render_template('unsupervised_application.html', results=results)
+
 
 # =========================
 # 🚀 RUN
